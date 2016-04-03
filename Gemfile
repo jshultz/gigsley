@@ -26,6 +26,8 @@ gem 'local_time'
 
 gem 'pg_search' # Search the site
 
+gem 'omniauth-facebook' # Add facebook login
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
