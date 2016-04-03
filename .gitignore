@@ -12,6 +12,10 @@ app/.DS_Store
 .idea/vcs.xml
 .idea/jsLibraryMappings.xml
 .idea/*
+.idea/.generators
+.idea/.rakeTasks
+.idea/misc.xml
+.idea/modules.xml
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
@@ -62,6 +66,9 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
+app/controllers/.DS_Store
+db/schema.rb
+
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
 #config/secrets.yml
@@ -83,6 +90,7 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+.env
 
 # Ignore Byebug command history file.
 .byebug_history
