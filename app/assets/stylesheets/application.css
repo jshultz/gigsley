@@ -1,0 +1,190 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require bootstrap-datetimepicker
+ */
+
+.application-body, .no-padding, .about-gems {
+  background-image: url("http://beyondthespectrum.org/wp-content/uploads/2014/11/chalkboard.jpg");
+  background-repeat: no-repeat;
+}
+
+form.new_user #error_explanation li {
+  color: red;
+}
+
+body {
+  color: white;
+  background-color: #D9E8F5;
+}
+
+.top {
+  padding-top: 2%;
+}
+
+.button {
+  padding-bottom: 2%;
+}
+
+.alert-alert {
+    color: #fff;
+    background-color: #f89406;
+    border-color: #e96506;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+
+.row {
+
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center {
+  margin: 10% 37%;
+}
+
+@media (max-width:991px){
+  .center{
+    margin:10% 24%;
+  }
+}
+
+.white {
+  color: white;
+}
+
+#fullname {
+  width: 300px;
+}
+
+#h1 {
+  text-align: center;
+  }
+
+h1, h3, label, p {
+  color: black;
+}
+
+h2 {
+  color: #F26101;
+}
+
+#map {
+  color: black;
+}
+
+th h3, th p {
+  color: white;
+}
+
+#map-container {
+  height: 400px;
+  border-radius: 16px 16px;
+  border-color: #fff;
+  border-style: solid;
+  box-shadow: 2px 2px 10px #B1B1B1;
+  margin-top: 25px;
+  border-width: 7px;
+}
+
+#map-canvas {
+  height: 384px;
+  width: 100%;
+}
+
+.alert-notice {
+  background-image: linear-gradient(to bottom,#dff0d8 0,#c8e5bc 100%);
+  background-color: #b2dba1;
+  background-repeat: repeat-x;
+  color: black;
+}
+
+.alert-warning {
+  color: black;
+}
+
+.container {
+    background-color: #fff;
+}
+
+body.about .container{
+  padding: 0;
+}
+
+ .portfolio-box {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 650px;
+}
+
+.portfolio-box .portfolio-box-caption {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    background: rgba(122,122,122,.8);
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-50%);
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    padding: 0 15px;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    font-size: 18px;
+}
+
+.portfolio-box:hover .portfolio-box-caption {
+    opacity: 1;
+}
+
+.thumb-img {
+    width: 30%;
+    margin: 0 auto;
+    border: 3px solid black;
+}

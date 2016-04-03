@@ -1,0 +1,13 @@
+Attendance Tracker
+
+Attendance Tracker is an app for Teachers to track their students attendance at after-school activities.  
+
+It was created for Darren Bell's wife who works at a Non-Profit that pays for students to attend after-school activities.  She thought it would be nice to have a way to track that the students were attending the activities.
+
+Contributors to this app are:   
+Darren Bell ( https://github.com/darrendbell ) 
+Jason Shultz ( https://github.com/jshultz ) 
+Sabina Shrestha ( https://github.com/SabinaShrestha ) 
+Stephanie Shultz ( https://github.com/stephyc93 )
+Tyler Russon ( https://github.com/tboneteen18 )
+
