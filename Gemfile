@@ -46,6 +46,8 @@ gem 'devise_invitable', '~> 1.3.4'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
+gem 'bootstrap_form'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
