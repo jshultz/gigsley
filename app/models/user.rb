@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   # validates :name, :email, presence: true, on: :create
 
+  has_one :profile
+
   def override_confirmable_email
     self.confirmed_at = DateTime.current
     self.save

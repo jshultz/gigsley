@@ -1,4 +1,9 @@
 class ProfileController < ApplicationController
+
+  def index
+
+  end
+
   def show
 
   end
@@ -8,6 +13,14 @@ class ProfileController < ApplicationController
   end
 
   def update
+    byebug
+    @profile = @user.create_profile(params)
+    # need to handle *** ActiveModel::ForbiddenAttributesError Exception: ActiveModel::ForbiddenAttributesError
+  end
 
+  def create
+    byebug
+    @profile = @user.create_profile(params)
+    # need to handle *** ActiveModel::ForbiddenAttributesError Exception: ActiveModel::ForbiddenAttributesError
   end
 end

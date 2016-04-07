@@ -1,9 +1,10 @@
-<h1>Profile#edit,</h1>
-<p>Find me in app/views/profile/edit.html.erb</p>
-<%= bootstrap_form_for :profile do |f| %>
-    <%= f.text_field :first_name %><br />
-    <%= f.text_field :last_name %><br />
-    <%= f.text_area :biography %><br />
-    <%= f.check_box :admin %><br />
+<h1>Profile</h1>
+<%= bootstrap_form_for :profile, url: {action: 'create'} do |f| %>
+    <%= f.text_field :street %><br />
+    <%= f.text_field :city %><br />
+    <%= f.text_area :state %><br />
+    <%= f.check_box :home_phone %><br />
+    <%= f.check_box :mobile_phone %><br />
+    <%= f.check_box :home_phone %><br />
     <%= f.submit %>
 <% end %>
