@@ -6,6 +6,7 @@ class ProfileController < ApplicationController
 
   def show
     @profile = Profile.where(user_id: params[:id].to_i).first
+    byebug
     if @profile
       @user = @profile.user
     else
@@ -21,11 +22,15 @@ class ProfileController < ApplicationController
   end
 
   def update
+    @ip = request.remote_ip
     @user = User.where(id: current_user.id).first
     @profile = @user.create_profile(profile_params)
   end
 
   def create
+    @ip = request.remote_ip
+    params[:profile][:ip] = request.remote_ip
+    params[:profile][:full_address] = params[:profile][:street] + ', ' + params[:profile][:city] + ', ' + params[:profile][:state]
     @user = User.where(id: current_user.id).first
     if @user.profile.nil?
       @user.create_profile(profile_params)
@@ -40,6 +45,6 @@ class ProfileController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone)
+    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address)
   end
 end
