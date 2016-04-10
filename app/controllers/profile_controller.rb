@@ -6,7 +6,6 @@ class ProfileController < ApplicationController
 
   def show
     @profile = Profile.where(user_id: params[:id].to_i).first
-    byebug
     if @profile
       @user = @profile.user
     else
