@@ -1,6 +1,10 @@
 class ProfileController < ApplicationController
 
   def index
+    @profiles = Profile.all
+  end
+
+  def search
 
   end
 
@@ -11,7 +15,6 @@ class ProfileController < ApplicationController
     else
       @user = nil
     end
-
   end
 
   def edit

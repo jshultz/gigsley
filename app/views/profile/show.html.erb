@@ -11,7 +11,13 @@
 
             <div class="row">
               <div class="col-md-1">Name: </div>
-              <div class="col-md-4"><%= @user.name %></div>
+              <div class="col-md-4">
+                <% if @user.name.present? %>
+                    <%= @user.name %>
+                <% else %>
+                    <%= @user.fullname %>
+                <% end %>
+              </div>
             </div>
 
             <div class="row">
@@ -21,9 +27,23 @@
 
         <% end %>
       </div>
-      <div class="col-md-4"><%= image_tag @user.image + '?type=large' %></div>
+      <div class="col-md-4"><%= image_tag @user.image + '?type=large' if @user.image.present? %></div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="map" style="width: 100%; height: 350px; margin-bottom:20px;"></div>
+      </div> <!-- /map-container col-md-12 -->
+    </div> <!-- /row -->
 <% end %>
 
+<% content_for :javascripts do %>
+    <script type='text/javascript'>
+      handler = Gmaps.build('Google');
+      $(document).ready(function(){
+        var activity = {"name": "<%= @profile.user.name %>", "lat": "<%= @profile.latitude %>", "lng": "<%= @profile.longitude %>", "location": "<%= @profile.full_address %>" }  // pass ruby variable to javascript
+        gmap_show(activity);    // init show map for company card (only print marker)
+      });
+    </script>
+<% end %>
 
 
