@@ -1,6 +1,8 @@
 class ProfileController < ApplicationController
 
   def index
+    @ip = request.remote_ip
+    @location = request.location
     @profiles = Profile.all
   end
 
