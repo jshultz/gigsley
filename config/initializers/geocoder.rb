@@ -22,9 +22,11 @@
 # config/initializers/geocoder.rb
 
 Geocoder.configure(
-    lookup:       :freegeoip,
+    lookup:       :google,
+    api_key:      :"AIzaSyCD7sQ_j-UHteSsVV5z9jKUddL2SFOcByA",
     language:     :en,
     units:        :mi,
     :http_proxy => ENV['QUOTAGUARD_URL'],
+    use_https:    :true,
     :timeout => 5
 )
