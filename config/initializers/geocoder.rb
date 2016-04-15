@@ -22,6 +22,7 @@
 # config/initializers/geocoder.rb
 
 Geocoder.configure(
+    ip_lookup:    :ipinfo_io,
     lookup:       :google,
     api_key:      :"AIzaSyCD7sQ_j-UHteSsVV5z9jKUddL2SFOcByA",
     language:     :en,
