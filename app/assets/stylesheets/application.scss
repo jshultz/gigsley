@@ -25,7 +25,9 @@ form.new_user #error_explanation li {
 body {
   background-color: #D9E8F5;
 }
-
+a, a:hover {
+  color: black;
+}
 .top {
   padding-top: 2%;
 }
@@ -35,18 +37,17 @@ body {
 }
 
 .alert-alert {
-    color: #fff;
-    background-color: #f89406;
-    border-color: #e96506;
+  color: #fff;
+  background-color: #f89406;
+  border-color: #e96506;
 }
 
 .alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
-
 
 .row {
 
@@ -62,9 +63,9 @@ body {
   margin: 10% 37%;
 }
 
-@media (max-width:991px){
-  .center{
-    margin:10% 24%;
+@media (max-width: 991px) {
+  .center {
+    margin: 10% 24%;
   }
 }
 
@@ -78,7 +79,7 @@ body {
 
 #h1 {
   text-align: center;
-  }
+}
 
 h1, h3, label, p {
   color: black;
@@ -97,7 +98,7 @@ th h3, th p {
 }
 
 .alert-notice {
-  background-image: linear-gradient(to bottom,#dff0d8 0,#c8e5bc 100%);
+  background-image: linear-gradient(to bottom, #dff0d8 0, #c8e5bc 100%);
   background-color: #b2dba1;
   background-repeat: repeat-x;
   color: black;
@@ -108,21 +109,21 @@ th h3, th p {
 }
 
 .container {
-    background-color: #fff;
+  background-color: #fff;
 }
 
-body.about .container{
+body.about .container {
   padding: 0;
 }
 
 .thumb-img {
-    width: 30%;
-    margin: 0 auto;
-    border: 3px solid black;
+  width: 30%;
+  margin: 0 auto;
+  border: 3px solid black;
 }
 
 a.facebook_login {
-    background: #ffffff image-url('social/facebook_login_button.png') no-repeat 0 0;
+  background: #ffffff image-url('social/facebook_login_button.png') no-repeat 0 0;
   background-size: 202px 46px;
   width: 202px;
   height: 46px;
