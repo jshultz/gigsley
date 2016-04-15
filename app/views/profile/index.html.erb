@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-4">We see you are at: <%= @ip %></div>
-  <div class="col-md-4">You're location is <%= debug(@location) %></div>
+  <div class="col-md-4">You're location is <%= @location.city %>, <%= @location.state %></div>
 </div>
 
 <% @profiles.each do |profile| %>
