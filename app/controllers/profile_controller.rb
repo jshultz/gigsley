@@ -5,7 +5,8 @@ class ProfileController < ApplicationController
     @location = request.location
     city = @location.city.present? ? @location.city : 'Ogden'
     state = @location.state.present? ? @location.state : 'UT'
-    @profiles = Profile.near("#{city}, #{state}, US", 40)
+    @range = params['range'].present? ? params['range'] : 100
+    @profiles = Profile.near("#{city}, #{state}, US", @range)
   end
 
   def search

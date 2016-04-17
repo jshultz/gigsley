@@ -20,9 +20,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  get '/profile/index' => 'profile#index'
+  # get '/profile/index' => 'profile#index'
+
+  match 'profile/index', to: 'profile#index', via: [:get, :post]
 
   resources :profile
+
 
   get '/about' => 'welcome#about'
 

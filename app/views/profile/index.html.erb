@@ -5,6 +5,38 @@
   <div class="col-md-4">You're location is <%= @location.city %>, <%= @location.state %></div>
 </div>
 
+<div class="row">
+
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Profile</h1>
+      </div>
+    </div>
+    <%= bootstrap_form_tag url: '/profile/index' do |f| %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.text_field :type, {label: "What are you searching for:"} %>
+          </div>
+          <div class="col-md-4">
+            <%= f.select :range, [[10, "10"], [20, "20"], [30, "30"], [100, "100"]],
+                         { label: "Choose the number of miles you want to searching:" },
+                         { class: "selectpicker" }
+            %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.submit %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">We are searching withing <%= @range %> of your location.</div>
+</div>
 <% @profiles.each do |profile| %>
     <div class="row">
       <div class="col-md-8">
