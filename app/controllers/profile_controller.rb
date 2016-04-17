@@ -3,8 +3,8 @@ class ProfileController < ApplicationController
   def index
     @ip = request.remote_ip
     @location = request.location
-    city = @location.city.present? ? @location.city.to_string : 'Ogden'
-    state = @location.state.present? ? @location.state.to_string : 'UT'
+    city = @location.city.present? ? @location.city : 'Ogden'
+    state = @location.state.present? ? @location.state : 'UT'
     @profiles = Profile.near("#{city}, #{state}, US", 40)
   end
 
