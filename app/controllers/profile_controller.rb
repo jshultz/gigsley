@@ -22,12 +22,18 @@ class ProfileController < ApplicationController
     end
   end
 
+  # Step 1
   def edit
     @user = User.where(id: current_user.id).first
+
+    if @user.profile.blank?
+      redirect_to edit_setup_path current_user.id
+    end
     if current_user.id != params[:id].to_i
       redirect_to profile_path
     end
   end
+
 
   def update
     @ip = request.remote_ip
@@ -35,10 +41,39 @@ class ProfileController < ApplicationController
     @profile = @user.create_profile(profile_params)
   end
 
+  # Step 2
   def vitals
     @user = User.where(id: current_user.id).first
     if request.post?
       @user.profile.update_attributes(profile_params)
+    end
+  end
+
+  # Step 3
+  def bio
+    @user = User.where(id: current_user.id).first
+    if request.post?
+      @user.profile.bio.update_attributes(bio_params)
+    end
+  end
+
+  # Step 4
+  def experience
+    @user = User.where(id: current_user.id).first
+    if request.post?
+      if @user.profile.update_attributes(experience_params)
+        redirect_to profile_path
+      end
+    end
+  end
+
+  # Step 5
+  def schedule
+    @user = User.where(id: current_user.id).first
+    if request.post?
+      if @user.profile.update_attributes(schedule_params)
+        redirect_to profile_path
+      end
     end
   end
 
@@ -53,18 +88,25 @@ class ProfileController < ApplicationController
     else
       @user.profile.update_attributes(profile_params)
       if @user.profile.birthDate.blank?
-        redirect_to vitals_path current_user.id
+        redirect_to profile_vitals_path current_user.id
       else
         redirect_to profile_path current_user.id
       end
-
     end
-
   end
 
   private
 
   def profile_params
     params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible )
+  end
+  def bio_params
+    params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel)
+  end
+  def experience_params
+    params.require(:experience).permit(:specialNeeds, :infants, :twins, :homework, :years, :sickChildren)
+  end
+  def schedule_params
+    params.require(:schedule).permit(:shortNotice, :summerMonths, :beforeSchool, :afterSchool)
   end
 end

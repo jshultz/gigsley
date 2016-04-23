@@ -1,0 +1,80 @@
+<h1>Create/Update Your Profile</h1>
+<div class="row">
+  <div class="col-md-3 col-md-offset-9"><%= link_to "Looking for Help?", profile_index_path %></div>
+</div>
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <div class="row">
+      <div class="col-md-12 setupSidebarBorder">
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p>Basic Profile Info</p>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>More About You</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12"><p>Bio</p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12"><p>Experience</p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12"><p>* Availability</p></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12 setupBorder">
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>Tell us more about your Availability.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= bootstrap_form_for :schedule, url: {action: 'schedule'} do |f| %>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :shortNotice, label: "Are you available on short notice?", checked: @user.profile.schedule.present? ? @user.profile.schedule.shortNotice : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :summerMonths, label: "Do you have experience caring for infants?", checked: @user.profile.schedule.present? ? @user.profile.schedule.summerMonths : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :beforeSchool, label: "Do you have experience caring for twins?", checked: @user.profile.schedule.present? ? @user.profile.schedule.beforeSchool : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :afterSchool, label: "Do you have experience providing homework help?", checked: @user.profile.schedule.present? ? @user.profile.schedule.afterSchool : nil %>
+                  </div>
+                </div>
+                <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

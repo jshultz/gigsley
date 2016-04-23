@@ -4,4 +4,7 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
   has_one :job
+  has_one :bio
+  has_one :experience
+  has_one :schedule
 end

@@ -1,0 +1,91 @@
+<h1>Create/Update Your Profile</h1>
+<div class="row">
+  <div class="col-md-3 col-md-offset-9"><%= link_to "Looking for Help?", profile_index_path %></div>
+</div>
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <div class="row">
+      <div class="col-md-12 setupSidebarBorder">
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p>Basic Profile Info</p>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>More About You</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12"><p>Bio</p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12"><p>* Experience</p></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12"><p>Availability</p></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12 setupBorder">
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>Tell us more about your Experience and Qualifications.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= bootstrap_form_for :experience, url: {action: 'experience'} do |f| %>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :specialNeeds, label: "Do you have experience with Special Needs?", checked: @user.profile.experience.present? ? @user.profile.experience.specialNeeds : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :infants, label: "Do you have experience caring for infants?", checked: @user.profile.experience.present? ? @user.profile.experience.infants : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :twins, label: "Do you have experience caring for twins?", checked: @user.profile.experience.present? ? @user.profile.experience.twins : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :homework, label: "Do you have experience providing homework help?", checked: @user.profile.experience.present? ? @user.profile.experience.homework : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-10">
+                    <%= f.text_field :years, label: "How many paid years of experience do you have?", value: @user.profile.experience.present? ? @user.profile.experience.years : nil %>
+                  </div>
+                  <div class="col-md-2" style="vertical-align: bottom">Years.</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :sickChildren, label: "Are you willing to care for sick children?", checked: @user.profile.experience.present? ? @user.profile.experience.sickChildren : nil %>
+                  </div>
+                </div>
+                <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
