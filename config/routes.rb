@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   match 'profile/index', to: 'profile#index', via: [:get, :post]
 
+  match 'profile/:id/vitals', to: 'profile#vitals', via: [:get, :post], as: :vitals
+
   resources :profile
 
 

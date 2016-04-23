@@ -23,6 +23,7 @@ class ProfileController < ApplicationController
   end
 
   def edit
+    @user = User.where(id: current_user.id).first
     if current_user.id != params[:id].to_i
       redirect_to profile_path
     end
@@ -34,17 +35,29 @@ class ProfileController < ApplicationController
     @profile = @user.create_profile(profile_params)
   end
 
+  def vitals
+    @user = User.where(id: current_user.id).first
+    if request.post?
+      @user.profile.update_attributes(profile_params)
+    end
+  end
+
   def create
     @ip = request.remote_ip
     params[:profile][:ip] = request.remote_ip
     params[:profile][:full_address] = params[:profile][:street] + ', ' + params[:profile][:city] + ', ' + params[:profile][:state]
     @user = User.where(id: current_user.id).first
-    if @user.profile.nil?
+    if @user.profile.blank?
       @user.create_profile(profile_params)
       redirect_to profile_path current_user.id
     else
       @user.profile.update_attributes(profile_params)
-      redirect_to profile_path current_user.id
+      if @user.profile.birthDate.blank?
+        redirect_to vitals_path current_user.id
+      else
+        redirect_to profile_path current_user.id
+      end
+
     end
 
   end
@@ -52,6 +65,6 @@ class ProfileController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address)
+    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible )
   end
 end

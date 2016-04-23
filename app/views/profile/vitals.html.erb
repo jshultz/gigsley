@@ -11,12 +11,12 @@
         </div>
           <div class="row">
             <div class="col-md-12">
-              <p>* Basic Profile Info</p>
+              <p>Basic Profile Info</p>
             </div>
           </div>
         <div class="row">
           <div class="col-md-12">
-            <p>More About You</p>
+            <p> * More About You</p>
           </div>
         </div>
         <div class="row">
@@ -39,14 +39,12 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= bootstrap_form_for :profile, url: {action: 'create'} do |f| %>
-                <%= f.text_field :street, value: @user.profile.present? ? @user.profile.street : nil  %>
-                <%= f.text_field :city, value: @user.profile.present? ? @user.profile.city : nil  %><br />
-                <%= f.text_field :state, value: @user.profile.present? ? @user.profile.state : nil  %><br />
-                <%= f.text_field :home_phone, value: @user.profile.present? ? @user.profile.home_phone : nil  %><br />
-                <%= f.text_field :mobile_phone, value: @user.profile.present? ? @user.profile.mobile_phone : nil  %><br />
-                <%= f.collection_select :job_id, Job.all, :id, :name %>
-                <%= f.check_box :terms, label: "I agree to the Terms of Use. For details on collection and use of your information, see our Privacy Policy." %><br />
+            <%= bootstrap_form_for :profile, url: {action: 'vitals'} do |f| %>
+                <%= f.phone_field :phone, label: "Contact Phone", value: @user.profile.present? ? @user.profile.phone : nil %>
+                <%= f.check_box :displayPhone, label: "Show Your Phone On The Site?", checked: @user.profile.present? ? @user.profile.displayPhone : nil %><br />
+                <%= f.date_select :birthDate, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100}, {required: true} %>
+                <%= f.select :gender, options_for_select([['Female', 0], ['Male', 1]], @user.profile.gender) %><br />
+                <%= f.check_box :eligible, label: "Are You Eligible To Work In The United States?", checked: @user.profile.eligible %><br />
                 <%= f.submit %>
             <% end %>
           </div>
