@@ -9,26 +9,7 @@
         <div class="row">
           <div class="col-md-12">&nbsp;</div>
         </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p>Basic Profile Info</p>
-            </div>
-          </div>
-        <div class="row">
-          <div class="col-md-12">
-            <p>More About You</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12"><p> * Bio</p></div>
-        </div>
-        <div class="row">
-          <div class="col-md-12"><p>Experience</p></div>
-        </div>
-        <div class="row">
-          <div class="col-md-12"><p>Availability</p></div>
-        </div>
-
+        <%= render "profile/sidebar" %>
       </div>
     </div>
 
@@ -46,12 +27,46 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= bootstrap_form_for :profile, url: {action: 'vitals'} do |f| %>
-                <%= f.phone_field :phone, label: "Contact Phone", value: @user.profile.present? ? @user.profile.phone : nil %>
-                <%= f.check_box :displayPhone, label: "Show Your Phone On The Site?", checked: @user.profile.present? ? @user.profile.displayPhone : nil %><br />
-                <%= f.date_select :birthDate, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100}, {required: true} %>
-                <%= f.select :gender, options_for_select([['Female', 0], ['Male', 1]], @user.profile.gender) %><br />
-                <%= f.check_box :eligible, label: "Are You Eligible To Work In The United States?", checked: @user.profile.eligible %><br />
+            <%= bootstrap_form_for :bio, url: {action: 'bio'} do |f| %>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.text_field :title, label: "Title", value: @user.profile.bio.present? ? @user.profile.bio.title : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.text_area :experience, label: "Your Experience", value: @user.profile.bio.present? ? @user.profile.bio.experience : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :car, label: "Do you own a car?", checked: @user.profile.bio.present? ? @user.profile.bio.car : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :pets, label: "Are you ok to be around pets?", checked: @user.profile.bio.present? ? @user.profile.bio.pet : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :smoke, label: "Are you a smoker?", checked: @user.profile.bio.present? ? @user.profile.bio.smoke : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.text_field :minHour, label: "Minimum/Hour", value: @user.profile.bio.present? ? @user.profile.bio.minHour : nil %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.text_field :maxHour, label: "Maximum/Hour", value: @user.profile.bio.present? ? @user.profile.bio.maxHour : nil %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-10">
+                    <%= f.text_field :travel, label: "How far you willing to travel?", value: @user.profile.bio.present? ? @user.profile.bio.travel : nil %>
+                  </div>
+                  <div class="col-md-2" style="vertical-align: bottom">Miles.</div>
+                </div>
                 <%= f.submit %>
             <% end %>
           </div>

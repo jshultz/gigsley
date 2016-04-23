@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   match 'profile/:id/vitals', to: 'profile#vitals', via: [:get, :post], as: :profile_vitals
   match 'profile/:id/bio', to: 'profile#bio', via: [:get, :post], as: :profile_bio
   match 'profile/:id/experience', to: 'profile#experience', via: [:get, :post], as: :profile_experience
-  match 'profile/:id/availability', to: 'profile#availability', via: [:get, :post], as: :profile_availability
+  match 'profile/:id/schedule', to: 'profile#schedule', via: [:get, :post], as: :profile_schedule
 
   resources :profile
 
