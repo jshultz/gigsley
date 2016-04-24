@@ -58,7 +58,7 @@ class SetupsController < ApplicationController
     if request.post?
 
       if @user.profile.update_attributes(profile_params)
-        redirect_to setup_bio_path
+        redirect_to setup_bio_path current_user.id
       end
 
     end
@@ -69,7 +69,7 @@ class SetupsController < ApplicationController
     @user = User.where(id: current_user.id).first
     if request.post?
       if @user.profile.create_bio(bio_params)
-        redirect_to setup_experience_path
+        redirect_to setup_experience_path current_user.id
       end
     end
   end
@@ -79,7 +79,7 @@ class SetupsController < ApplicationController
     @user = User.where(id: current_user.id).first
     if request.post?
       if @user.profile.create_experience(experience_params)
-        redirect_to setup_schedule_path
+        redirect_to setup_schedule_path current_user.id
       end
     end
   end
@@ -89,7 +89,7 @@ class SetupsController < ApplicationController
     @user = User.where(id: current_user.id).first
     if request.post?
       if @user.profile.create_schedule(schedule_params)
-        redirect_to profile_path
+        redirect_to profile_path current_user.id
       end
     end
   end
