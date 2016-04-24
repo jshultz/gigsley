@@ -15,6 +15,10 @@ class ProfileController < ApplicationController
 
   def show
     @profile = Profile.where(user_id: params[:id].to_i).first
+    if (current_user.id == params[:id].to_i) && @profile.blank?
+      redirect_to edit_setup_path(current_user.id)
+    end
+
     if @profile
       @user = @profile.user
     else
