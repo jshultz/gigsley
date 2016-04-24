@@ -10,24 +10,89 @@
         <% if !@profile.nil? %>
 
             <div class="row">
-              <div class="col-md-1">Name: </div>
-              <div class="col-md-4">
-                <% if @user.name.present? %>
-                    <%= @user.name %>
-                <% else %>
-                    <%= @user.fullname %>
+              <div class="col-md-4"><%= image_tag @user.image + '?type=large' if @user.image.present? %></div>
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col-md-2">Name: </div>
+                  <div class="col-md-6">
+                    <% if @user.name.present? %>
+                        <%= @user.name %>
+                    <% else %>
+                        <%= @user.fullname %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">Babysitter in: </div>
+                  <div class="col-md-4"><%= @profile.city %>, <%= @profile.state %> </div>
+                </div>
+
+                <div class="row">
+                  <% if @user.profile.birthDate.present? %>
+                    <div class="col-md-3">
+                      <p><%= Time.now.year - @user.profile.birthDate.year %> years old.</p>
+                    </div>
+                  <% end %>
+                  <% if @user.profile.experience.present? %>
+                    <div class="col-md-5">
+                      <p><%= @user.profile.experience.years %> year(s) of experience.</p>
+                    </div>
+                  <% end %>
+                  <% if @user.profile.gender.present? %>
+                  <div class="col-md-2">
+                    <p><%= @user.profile.gender == 0 ? 'Female'  : 'Male' %></p>
+                  </div>
+                  <% end %>
+                </div>
+                <% if @user.profile.bio.present? %>
+                    <div class="row">
+                      <div class="col-md-12">
+                        Wages: <%= "$#{@user.profile.bio.minHour}" if @user.profile.bio.minHour.present? %>
+                        to
+                        <%= "$#{@user.profile.bio.maxHour}" if @user.profile.bio.maxHour.present? %>
+                      </div>
+                    </div>
                 <% end %>
+
               </div>
             </div>
 
             <div class="row">
-              <div class="col-md-1">Address: </div>
-              <div class="col-md-4"><%= @profile.street %><br/><%= @profile.city %>, <%= @profile.state %> </div>
+              <div class="col-md-12">
+                <h3>Bio</h3>
+                <p><strong><%= @profile.bio.title if @profile.bio.present? %></strong></p>
+                <p><%= @profile.bio.experience if @profile.bio.present? %></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Experience</h3>
+              </div>
+            </div>
+            <div  class="row">
+              <div class="col-md-12">
+                <% if @user.profile.experience.present? %>
+                  <p>Special Needs Experience</p>
+                <% end %>
+                <% if @user.profile.experience.present? %>
+                    <p>Infants Needs Experience</p>
+                <% end %>
+                <% if @user.profile.experience.present? %>
+                    <p>Twins Needs Experience</p>
+                <% end %>
+                <% if @user.profile.experience.present? %>
+                    <p>Homework Needs Experience</p>
+                <% end %>
+                <% if @user.profile.experience.present? %>
+                    <p>Sick Children Needs Experience</p>
+                <% end %>
+              </div>
             </div>
 
         <% end %>
       </div>
-      <div class="col-md-4"><%= image_tag @user.image + '?type=large' if @user.image.present? %></div>
+
     </div>
     <div class="row">
       <div class="col-md-12">

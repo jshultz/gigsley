@@ -61,7 +61,7 @@ class ProfileController < ApplicationController
   def experience
     @user = User.where(id: current_user.id).first
     if request.post?
-      if @user.profile.update_attributes(experience_params)
+      if @user.profile.experience.update_attributes(experience_params)
         redirect_to profile_path
       end
     end
@@ -71,7 +71,7 @@ class ProfileController < ApplicationController
   def schedule
     @user = User.where(id: current_user.id).first
     if request.post?
-      if @user.profile.update_attributes(schedule_params)
+      if @user.profile.schedule.update_attributes(schedule_params)
         redirect_to profile_path
       end
     end
