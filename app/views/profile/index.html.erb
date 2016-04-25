@@ -5,23 +5,17 @@
         <h1>Profile</h1>
       </div>
     </div>
-    <%= bootstrap_form_tag url: '/profile/index' do |f| %>
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.text_field :type, {label: "What are you searching for:"} %>
-          </div>
-          <div class="col-md-4">
-            <%= f.select :range, [[10, "10"], [20, "20"], [30, "30"], [100, "100"]],
-                         { label: "Choose the number of miles you want to searching:" },
-                         { class: "selectpicker" }
-            %>
-          </div>
+    <%= bootstrap_form_tag url: '/profile/index', layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-7" do |f| %>
+        <div class="col-md-6">
+          <%= f.text_field :type, {label: "Search" } %>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <%= f.submit "Update Search" %>
-          </div>
+        <div class="col-md-4">
+          <%= f.select :range, [[10, "10"], [20, "20"], [30, "30"], [100, "100"]],
+                       { label: "Distance:"  },
+                       { class: "selectpicker" }
+          %>
         </div>
+        <%= f.submit "Update Search" %>
     <% end %>
   </div>
 </div>
