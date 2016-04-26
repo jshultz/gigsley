@@ -7,4 +7,5 @@ class Profile < ActiveRecord::Base
   has_one :bio
   has_one :experience
   has_one :schedule
+  has_one :gallery
 end

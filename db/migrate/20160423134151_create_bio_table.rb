@@ -9,8 +9,8 @@ class CreateBioTable < ActiveRecord::Migration
       t.integer :minHour
       t.integer :maxHour
       t.integer :travel
-
-      t.belongs_to :profile, index: true
+      t.references :profile, index: true, foreign_key: true
     end
+
   end
 end

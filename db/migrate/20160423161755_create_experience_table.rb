@@ -8,8 +8,8 @@ class CreateExperienceTable < ActiveRecord::Migration
       t.boolean :years
       t.boolean :sickChildren
 
-      t.belongs_to :profile, index: true
+      t.references :profile, index: true, foreign_key: true
     end
-    add_reference :profiles, :experiences, index: true
+
   end
 end
