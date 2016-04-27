@@ -1,4 +1,4 @@
 class Gallery < ActiveRecord::Base
 
-  has_many :photos, :dependent => :destroy
+  has_many :pictures, :dependent => :destroy
 end
