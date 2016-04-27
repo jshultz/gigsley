@@ -35,7 +35,8 @@ class GalleriesController < ApplicationController
 
   # GET /galleries/1/edit
   def edit
-    @gallery = Gallery.find(params[:id])
+    # @gallery = Gallery.find(params[:id])
+    @gallery = Gallery.where(id: params[:id], profile_id: current_user.id).first
   end
 
   # POST /galleries

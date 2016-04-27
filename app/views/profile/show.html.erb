@@ -59,6 +59,7 @@
               </div>
             </div>
 
+            <!-- Bio -->
             <div class="row">
               <div class="col-md-12">
                 <h3>Bio</h3>
@@ -66,13 +67,36 @@
                 <p><%= @profile.bio.experience if @profile.bio.present? %></p>
               </div>
             </div>
+            <!-- End Bio -->
 
+            <!-- Photos -->
+              <% @profile.galleries.each do |g| %>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4><%= g.name %></h4>
+                  </div>
+                </div>
+
+                  <div class="row">
+                    <% g.pictures.each do |p| %>
+                        <div class="col-md-2">
+                          <%= image_tag p.image.url , class: 'img-responsive' %>
+                        </div>
+                    <% end %>
+                  </div>
+
+              <% end %>
+
+            <!-- End Photos -->
+
+            <!-- Experience -->
             <div class="row">
               <div class="col-md-12">
                 <h3>Experience</h3>
               </div>
             </div>
-            <div  class="row">
+            <div class="row">
               <div class="col-md-12">
                 <% if @user.profile.experience.present? %>
                   <p>Special Needs Experience</p>
@@ -91,7 +115,7 @@
                 <% end %>
               </div>
             </div>
-
+            <!-- End Experience -->
         <% end %>
       </div>
 
