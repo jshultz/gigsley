@@ -16,6 +16,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+    @gallery = Gallery.find(params[:gallery_id])
     @picture = Picture.find(params[:id])
 
     respond_to do |format|
@@ -38,7 +39,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
-    #@gallery = Gallery.find(params[:gallery_id])
+    @gallery = Gallery.find(params[:gallery_id])
 
     @picture = Picture.find(params[:id])
     # @picture = Picture.find(params[:id])

@@ -43,10 +43,10 @@
                 <%= image_tag pic.image.url, class: 'img-responsive' %>
                 <div class="caption">
                   <p style="text-align: center;">
-                    <%= link_to "Edit picture", picture_path(pic) %>
+                    <%= link_to "Edit picture", gallery_picture_path(@gallery.id, pic) %>
 
                     <%=
-                      link_to "Delete picture", pic,
+                      link_to "Delete picture", gallery_picture_path(@gallery.id, pic),
                               data: { confirm: "Are you sure?" },
                               method: :delete
                     %>
