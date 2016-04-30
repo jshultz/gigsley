@@ -81,7 +81,7 @@
                   <div class="row">
                     <% g.pictures.each do |p| %>
                         <div class="col-md-2">
-                          <%= image_tag p.image.url , class: 'img-responsive' %>
+                          <%= link_to image_tag(p.image.url, class: 'img-responsive'), gallery_picture_path(p.gallery_id, p.id) %>
                         </div>
                     <% end %>
                   </div>

@@ -16,7 +16,7 @@
           <% end %>
           <div class="caption">
             <p style="text-align: center;">
-              <%= gallery.name.truncate(14) %><br/>
+              <%= link_to gallery.name.truncate(14), gallery_path(gallery) %><br/>
               <%= link_to "Show", gallery_path(gallery) %>
               <%= link_to "Edit", edit_gallery_path(gallery) %>
               <%= link_to "Delete", gallery,
