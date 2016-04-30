@@ -7,7 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @picture.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= @picture.image %></dd>
+  <dd><%= image_tag @picture.image, class: 'img-responsive' %></dd>
   <dt><strong><%= model_class.human_attribute_name(:gallery_id) %>:</strong></dt>
   <dd><%= @picture.gallery_id %></dd>
 </dl>
