@@ -16,6 +16,7 @@ app/.DS_Store
 .idea/.rakeTasks
 .idea/misc.xml
 .idea/modules.xml
+public/*
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
