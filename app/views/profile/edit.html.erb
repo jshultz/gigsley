@@ -34,7 +34,7 @@
                 <%= f.text_field :home_phone, value: @user.profile.present? ? @user.profile.home_phone : nil  %><br />
                 <%= f.text_field :mobile_phone, value: @user.profile.present? ? @user.profile.mobile_phone : nil  %><br />
                 <%= f.collection_select :job_id, Job.all, :id, :name %>
-                <%= f.text_field "Skills (comma separated)", value: @user.profile.tag_list.present? ? @user.profile.tag_list.to_s : nil %><br />
+                <%= f.text_field :skill_list, label: "Skill List (comma separated)", value: @user.profile.tag_list.present? ? @user.profile.tag_list.to_s : nil %><br />
                 <%= f.check_box :terms, label: "I agree to the Terms of Use. For details on collection and use of your information, see our Privacy Policy." %><br />
                 <%= f.submit %>
             <% end %>

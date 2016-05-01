@@ -42,8 +42,8 @@ class ProfileController < ApplicationController
   def update
     @ip = request.remote_ip
     @user = User.where(id: current_user.id).first
-    byebug
     @user.profile.tag_list.add("awesome, slick", parse: true)
+    @user.profile.skill_list.add(params[:tag_list])
 
     @profile = @user.create_profile(profile_params)
   end
@@ -105,7 +105,7 @@ class ProfileController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :tag_list )
+    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list )
   end
   def bio_params
     params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel)

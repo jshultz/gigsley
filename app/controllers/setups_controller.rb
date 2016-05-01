@@ -19,7 +19,6 @@ class SetupsController < ApplicationController
   # GET /setups/1/edit
   def edit
     @user = User.where(id: current_user.id).first
-
     if current_user.id != params[:id].to_i
       redirect_to profile_path
     end
@@ -34,6 +33,7 @@ class SetupsController < ApplicationController
     @user = User.where(id: current_user.id).first
     if @user.profile.blank?
       @user.create_profile(profile_params)
+      @user.profile.skill_list.add(params[:tag_list])
       redirect_to setup_vitals_path current_user.id
     end
   end
@@ -112,7 +112,7 @@ class SetupsController < ApplicationController
       params.fetch(:setup, {})
     end
     def profile_params
-      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible )
+      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list )
     end
     def bio_params
       params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel)
