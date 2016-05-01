@@ -17,6 +17,7 @@ app/.DS_Store
 .idea/misc.xml
 .idea/modules.xml
 public/*
+public/images/*
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
