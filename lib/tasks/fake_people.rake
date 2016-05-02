@@ -40,6 +40,7 @@ namespace :db do
                       mobile_phone: Faker::PhoneNumber.cell_phone,
                       full_address: address.sample,
                       user_id: user.id
+
         )
         end # 5.times
       end # user.present?

@@ -62,6 +62,7 @@ class SetupsController < ApplicationController
     if request.post?
 
       if @user.profile.update_attributes(profile_params)
+        byebug
         redirect_to setup_vitals_path current_user.id
       end
 
@@ -133,7 +134,7 @@ class SetupsController < ApplicationController
       params.fetch(:setup, {})
     end
     def profile_params
-      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :vendor )
+      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :vendor, :job_id )
     end
     def bio_params
       params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel)
