@@ -22,22 +22,28 @@ Rails.application.routes.draw do
 
   # get '/profile/index' => 'profile#index'
 
+  resources :customers
+
+  resources :galleries do
+    resources :pictures
+  end
+
   match 'profile/index', to: 'profile#index', via: [:get, :post]
   match 'profile/:id/vitals', to: 'profile#vitals', via: [:get, :post], as: :profile_vitals
   match 'profile/:id/bio', to: 'profile#bio', via: [:get, :post], as: :profile_bio
   match 'profile/:id/experience', to: 'profile#experience', via: [:get, :post], as: :profile_experience
   match 'profile/:id/schedule', to: 'profile#schedule', via: [:get, :post], as: :profile_schedule
 
-  resources :galleries do
-    resources :pictures
-  end
-
   resources :profile
 
+  resources :providers
+
+  match 'setup/:id/jobs', to: 'setups#jobs', via: [:get, :post], as: :setup_jobs
   match 'setup/:id/vitals', to: 'setups#vitals', via: [:get, :post], as: :setup_vitals
   match 'setup/:id/bio', to: 'setups#bio', via: [:get, :post], as: :setup_bio
   match 'setup/:id/experience', to: 'setups#experience', via: [:get, :post], as: :setup_experience
   match 'setup/:id/schedule', to: 'setups#schedule', via: [:get, :post], as: :setup_schedule
+  match 'setup/thankyou', to: 'setups#thankyou', via: [:get, :post], as: :setup_thankyou
 
   resources :setups, controller: 'setups', as: 'setup'
 

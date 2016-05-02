@@ -34,25 +34,41 @@ class SetupsController < ApplicationController
     if @user.profile.blank?
       @user.create_profile(profile_params)
       @user.profile.skill_list.add(params[:tag_list])
-      redirect_to setup_vitals_path current_user.id
+      if params[:profile][:vendor] == 1
+        redirect_to setup_jobs_path current_user.id
+      else
+        redirect_to setup_thankyou_path
+      end
     end
   end
 
   # PATCH/PUT /setups/1
   # PATCH/PUT /setups/1.json
-  def update
-    respond_to do |format|
-      if @setup.update(setup_params)
-        format.html { redirect_to @setup, notice: 'Setup was successfully updated.' }
-        format.json { render :show, status: :ok, location: @setup }
-      else
-        format.html { render :edit }
-        format.json { render json: @setup.errors, status: :unprocessable_entity }
+  # def update
+  #   respond_to do |format|
+  #     if @setup.update(setup_params)
+  #       format.html { redirect_to @setup, notice: 'Setup was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @setup }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @setup.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
+  # Step 2
+  def jobs
+    @user = User.where(id: current_user.id).first
+    if request.post?
+
+      if @user.profile.update_attributes(profile_params)
+        redirect_to setup_vitals_path current_user.id
       end
+
     end
   end
 
-  # Step 2
+  # Step 3
   def vitals
     @user = User.where(id: current_user.id).first
     if request.post?
@@ -64,7 +80,7 @@ class SetupsController < ApplicationController
     end
   end
 
-  # Step 3
+  # Step 4
   def bio
     @user = User.where(id: current_user.id).first
     if request.post?
@@ -74,7 +90,7 @@ class SetupsController < ApplicationController
     end
   end
 
-  # Step 4
+  # Step 5
   def experience
     @user = User.where(id: current_user.id).first
     if request.post?
@@ -84,14 +100,19 @@ class SetupsController < ApplicationController
     end
   end
 
-  # Step 5
+  # Step 6
   def schedule
     @user = User.where(id: current_user.id).first
     if request.post?
       if @user.profile.create_schedule(schedule_params)
-        redirect_to profile_path current_user.id
+        redirect_to setup_thankyou_path
       end
     end
+  end
+
+  # Thank You
+  def thankyou
+    @user = User.where(id: current_user.id).first
   end
 
   # DELETE /setups/1
@@ -112,7 +133,7 @@ class SetupsController < ApplicationController
       params.fetch(:setup, {})
     end
     def profile_params
-      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list )
+      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :vendor )
     end
     def bio_params
       params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel)

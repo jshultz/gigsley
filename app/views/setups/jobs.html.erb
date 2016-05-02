@@ -30,32 +30,17 @@
             <%= bootstrap_form_for :profile, url: {action: 'create'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :street, value: @user.profile.present? ? @user.profile.street : nil  %>
+                    <%= f.collection_select :job_id, Job.all, :id, :name %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :city, value: @user.profile.present? ? @user.profile.city : nil  %>
+                    <%= f.text_field :skill_list, label: "Skill List (comma separated)", value: @user.profile.present? ? @user.profile.tag_list : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :state, value: @user.profile.present? ? @user.profile.state : nil  %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= f.text_field :home_phone, value: @user.profile.present? ? @user.profile.home_phone : nil  %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= f.text_field :mobile_phone, value: @user.profile.present? ? @user.profile.mobile_phone : nil  %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= f.check_box :vendor, label: "Are you a Vendor?" %>
+                    <%= f.check_box :terms, label: "I agree to the Terms of Use. For details on collection and use of your information, see our Privacy Policy." %>
                   </div>
                 </div>
                 <div class="row">
