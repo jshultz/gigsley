@@ -33,7 +33,7 @@
         <span class="icon-bar"></span>
       </button>
       <% if current_user %>
-          <% if current_user && !current_user.profile.blank? && current_user.profile.vendor == 1 %>
+          <% if current_user && !current_user.profile.blank? && current_user.profile.vendor == true %>
               <a class="navbar-brand" href="/providers">Gigsley</a>
           <% else %>
               <a class="navbar-brand" href="/customers">Gigsley</a>

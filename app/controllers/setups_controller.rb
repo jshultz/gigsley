@@ -62,7 +62,7 @@ class SetupsController < ApplicationController
 
       if @user.profile.update_attributes(profile_params)
 
-        if @user.profile.vendor == 1
+        if @user.profile.vendor == true
           redirect_to setup_vitals_path current_user.id
         else
           redirect_to setup_thankyou_path
