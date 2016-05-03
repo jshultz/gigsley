@@ -4,7 +4,21 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    @ip = request.remote_ip
+    @location = request.location
+    @city = @location.city.present? ? @location.city : 'Ogden'
+    @state = @location.state.present? ? @location.state : 'UT'
+    @range = params['range'].present? ? params['range'] : 100
+    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where(vendor: 1)
+  end
+
+  def search
+    @ip = request.remote_ip
+    @location = request.location
+    @city = @location.city.present? ? @location.city : 'Ogden'
+    @state = @location.state.present? ? @location.state : 'UT'
+    @range = params['range'].present? ? params['range'] : 100
+    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( vendor: 1, job_id: params["Job"][:job_id].to_i )
   end
 
   # GET /customers/1

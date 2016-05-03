@@ -5,12 +5,14 @@
 <div class="row">
   <div class="col-md-3 col-md-offset-1">
     <div class="row">
-      <div class="col-md-12 setupSidebarBorder">
-        <div class="row">
-          <div class="col-md-12">&nbsp;</div>
+      <% if current_user.profile.vendor == 1 %>
+        <div class="col-md-12 setupSidebarBorder">
+          <div class="row">
+            <div class="col-md-12">&nbsp;</div>
+          </div>
+          <%= render "setups/sidebar" %>
         </div>
-        <%#= render "setups/sidebar" %>
-      </div>
+      <% end %>
     </div>
 
   </div>

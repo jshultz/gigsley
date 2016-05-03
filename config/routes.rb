@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   # get '/profile/index' => 'profile#index'
 
+  match 'customers/search', to: 'customers#search', via: [:get, :post]
   resources :customers
 
   resources :galleries do

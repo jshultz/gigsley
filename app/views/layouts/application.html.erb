@@ -32,7 +32,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/providers">Gigsley</a>
+      <% if current_user %>
+          <% if current_user && !current_user.profile.blank? && current_user.profile.vendor == 1 %>
+              <a class="navbar-brand" href="/providers">Gigsley</a>
+          <% else %>
+              <a class="navbar-brand" href="/customers">Gigsley</a>
+          <% end %>
+      <% else %>
+          <a class="navbar-brand" href="/">Gigsley</a>
+      <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,6 +57,13 @@
               <li><a href="/galleries">Create/Edit Your Personal Gallery</a></li>
             </ul>
           </li>
+        <% end %>
+        <% if current_user %>
+          <% if !current_user.profile.blank? && current_user.profile.vendor == 1 %>
+              <li role="presentation"><a href="/providers">Find Customers</a></li>
+          <% else %>
+              <li role="presentation"><a href="/customers">Find Providers</a></li>
+          <% end %>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

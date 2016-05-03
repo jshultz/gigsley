@@ -32,9 +32,8 @@ class SetupsController < ApplicationController
     params[:profile][:full_address] = params[:profile][:street] + ', ' + params[:profile][:city] + ', ' + params[:profile][:state]
     @user = User.where(id: current_user.id).first
     if @user.profile.blank?
-      @user.create_profile(profile_params)
-      @user.profile.skill_list.add(params[:tag_list])
-      if params[:profile][:vendor] == 1
+      if @user.create_profile(profile_params)
+        @user.profile.skill_list.add(params[:tag_list])
         redirect_to setup_jobs_path current_user.id
       else
         redirect_to setup_thankyou_path
@@ -62,8 +61,13 @@ class SetupsController < ApplicationController
     if request.post?
 
       if @user.profile.update_attributes(profile_params)
-        byebug
-        redirect_to setup_vitals_path current_user.id
+
+        if @user.profile.vendor == 1
+          redirect_to setup_vitals_path current_user.id
+        else
+          redirect_to setup_thankyou_path
+        end
+
       end
 
     end
@@ -73,11 +77,9 @@ class SetupsController < ApplicationController
   def vitals
     @user = User.where(id: current_user.id).first
     if request.post?
-
       if @user.profile.update_attributes(profile_params)
         redirect_to setup_bio_path current_user.id
       end
-
     end
   end
 
