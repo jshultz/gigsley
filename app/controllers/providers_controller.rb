@@ -1,5 +1,5 @@
 class ProvidersController < ApplicationController
-  before_action :set_provider, only: [:show, :edit, :update, :destroy]
+  # before_action :set_provider, only: [:show, :edit, :update, :destroy]
 
   # GET /providers
   # GET /providers.json
@@ -24,6 +24,16 @@ class ProvidersController < ApplicationController
   # GET /providers/1
   # GET /providers/1.json
   def show
+    @profile = Profile.where(user_id: params[:id].to_i).first
+    if (current_user.id == params[:id].to_i) && @profile.blank?
+      redirect_to edit_setup_path(current_user.id)
+    end
+
+    if @profile
+      @user = @profile.user
+    else
+      @user = nil
+    end
   end
 
   # GET /providers/new

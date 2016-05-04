@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  # before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
   # GET /customers.json
@@ -24,6 +24,16 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    @profile = Profile.where(user_id: params[:id].to_i).first
+    if (current_user.id == params[:id].to_i) && @profile.blank?
+      redirect_to edit_setup_path(current_user.id)
+    end
+
+    if @profile
+      @user = @profile.user
+    else
+      @user = nil
+    end
   end
 
   # GET /customers/new

@@ -37,14 +37,14 @@
         <% extraParam =  user.image.match("size=300x300") ? '' : "?type=large" %>
         <% user_image = user.image.present? ? image_url(user.image + extraParam) : image_url('male_icon.svg') %>
         <%=
-          link_to image_tag(user_image, class: 'img-responsive'), profile_path(profile)
+          link_to image_tag(user_image, class: 'img-responsive'), customer_path(profile)
         %>
       </div>
       <div class="col-md-8">
         <p>
           <strong>
             <%=
-              link_to profile.user.fullname.present? ? profile.user.fullname : profile.user.name, profile_path(profile)
+              link_to profile.user.fullname.present? ? profile.user.fullname : profile.user.name, customer_path(profile)
             %>
           </strong>
         </p>
@@ -54,7 +54,7 @@
           <% end %>
         </p>
         <% if profile.experience.present? %>
-            <p><%= link_to (profile.experience.years) + ' years of experience.', profile_path(profile) %></p>
+            <p><%= link_to (profile.experience.years) + ' years of experience.', customer_path(profile) %></p>
         <% end %>
       </div>
     </div>
