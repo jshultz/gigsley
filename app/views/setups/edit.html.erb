@@ -55,9 +55,15 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :vendor, label: "Are you a Vendor?" %>
+                    <%= f.check_box :customer, label: "Do you wish to register as a Customer?" %>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.check_box :provider, label: "Do you wish to register as a Provider?" %>
+                  </div>
+                </div>
+
                 <div class="row">
                   <div class="col-md-12">
                     <%= f.submit %>

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   resources :profile
 
+  match 'providers/search', to: 'providers#search', via: [:get, :post]
   resources :providers
 
   match 'setup/:id/jobs', to: 'setups#jobs', via: [:get, :post], as: :setup_jobs

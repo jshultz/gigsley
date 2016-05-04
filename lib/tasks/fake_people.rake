@@ -8,8 +8,10 @@ namespace :db do
       fullname = Faker::Name.name
       email = "user-#{n+1}@example.com"
       password = "password"
+      image = Faker::Avatar.image
       User.create!( fullname: fullname,
                     email: email,
+                    image: image,
                     password: password,
                     password_confirmation: password)
     end
@@ -42,7 +44,8 @@ namespace :db do
                       user_id: user.id,
                       job_id: [1,2].sample,
                       skill_list: ['hugger', 'detail orientated', 'outoing', 'playful'].sample,
-                      vendor: 1,
+                      provider: 1,
+                      customer: 0,
                       terms: 1
 
         )
@@ -67,7 +70,8 @@ namespace :db do
               full_address: address.sample,
               user_id: user.id,
               job_id: [1,2].sample,
-              vendor: 0,
+              provider: 0,
+              customer: 1,
               terms: 1
 
           )

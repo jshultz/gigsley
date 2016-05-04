@@ -62,7 +62,7 @@ class SetupsController < ApplicationController
 
       if @user.profile.update_attributes(profile_params)
 
-        if @user.profile.vendor == true
+        if @user.profile.provider == true
           redirect_to setup_vitals_path current_user.id
         else
           redirect_to setup_thankyou_path
@@ -136,7 +136,7 @@ class SetupsController < ApplicationController
       params.fetch(:setup, {})
     end
     def profile_params
-      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :vendor, :job_id )
+      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :provider, :customer, :job_id )
     end
     def bio_params
       params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel)

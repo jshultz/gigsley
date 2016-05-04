@@ -9,7 +9,7 @@ class CustomersController < ApplicationController
     @city = @location.city.present? ? @location.city : 'Ogden'
     @state = @location.state.present? ? @location.state : 'UT'
     @range = params['range'].present? ? params['range'] : 100
-    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where(vendor: 1)
+    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where(customer: true)
   end
 
   def search
@@ -18,7 +18,7 @@ class CustomersController < ApplicationController
     @city = @location.city.present? ? @location.city : 'Ogden'
     @state = @location.state.present? ? @location.state : 'UT'
     @range = params['range'].present? ? params['range'] : 100
-    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( vendor: 1, job_id: params["Job"][:job_id].to_i )
+    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( customer: true, job_id: params["Job"][:job_id].to_i )
   end
 
   # GET /customers/1

@@ -33,7 +33,7 @@
         <span class="icon-bar"></span>
       </button>
       <% if current_user %>
-          <% if current_user && !current_user.profile.blank? && current_user.profile.vendor == true %>
+          <% if current_user && !current_user.profile.blank? && current_user.profile.provider == true %>
               <a class="navbar-brand" href="/providers">Gigsley</a>
           <% else %>
               <a class="navbar-brand" href="/customers">Gigsley</a>
@@ -59,10 +59,11 @@
           </li>
         <% end %>
         <% if current_user %>
-          <% if !current_user.profile.blank? && current_user.profile.vendor == 1 %>
-              <li role="presentation"><a href="/providers">Find Customers</a></li>
-          <% else %>
-              <li role="presentation"><a href="/customers">Find Providers</a></li>
+          <% if !current_user.profile.blank? && current_user.profile.provider == true %>
+              <li role="presentation"><a href="/customers">Find Customers</a></li>
+          <% end %>
+          <% if !current_user.profile.blank? && current_user.profile.customer == true %>
+              <li role="presentation"><a href="/providers">Find Providers</a></li>
           <% end %>
         <% end %>
       </ul>
