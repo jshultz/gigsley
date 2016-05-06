@@ -31,7 +31,9 @@
   <div class="col-md-12">We are searching withing <%= @range %> miles of your location (<%= @city %>, <%= @state %>) for Customers.</div>
 </div>
 <% @profiles.each do |profile| %>
-    <div class="row resultRow">
+    <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
+    <div class="row">
+      <div class="col-md-1">&nbsp;</div>
       <div class="col-md-1">
         <% user = User.where(:id => profile.user_id).first %>
         <% extraParam =  user.image.match("size=300x300") ? '' : "?type=large" %>
@@ -57,5 +59,7 @@
             <p><%= link_to (profile.experience.years) + ' years of experience.', customer_path(profile) %></p>
         <% end %>
       </div>
+      <div class="col-md-1">&nbsp;</div>
     </div>
+    <div class="row" style="border-bottom: 1px solid #D9E8F5"><div class="col-md-12"><p>&nbsp;</p></div></div>
 <% end %>
