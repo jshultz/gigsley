@@ -7,7 +7,7 @@ class CreateExperienceTable < ActiveRecord::Migration
       t.boolean :homework
       t.boolean :years
       t.boolean :sickChildren
-
+      t.timestamps null: false
       t.references :profile, index: true, foreign_key: true
     end
 

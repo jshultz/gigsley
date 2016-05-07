@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-4">
-        <h1>Profile</h1>
+        <h1>Gig Results</h1>
       </div>
     </div>
     <%= bootstrap_form_tag url: '/customers/search', layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-7" do |f| %>
@@ -30,18 +30,20 @@
 <div class="row">
   <div class="col-md-12">We are searching withing <%= @range %> miles of your location (<%= @city %>, <%= @state %>) for Customers.</div>
 </div>
+
 <% @gigs.each do |gig| %>
     <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
-    <div class="row">
-      <div class="col-md-1">&nbsp;</div>
-      <div class="col-md-4"><h4><%= gig.jobName %></h4></div>
-      <div class="col-md-1">&nbsp;</div>
-    </div>
-    <div class="row">
-      <div class="col-md-1">&nbsp;</div>
-      <div class="col-md-4"><p><%= gig.description %></p></div>
-      <div class="col-md-1">&nbsp;</div>
-    </div>
-    <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
+    <%= link_to customer_gig_path gig.id do %>
+        <div class="row">
+          <div class="col-md-1">&nbsp;</div>
+          <div class="col-md-4"><h4><%= gig.jobName %></h4></div>
+          <div class="col-md-1">&nbsp;</div>
+        </div>
+        <div class="row">
+          <div class="col-md-1">&nbsp;</div>
+          <div class="col-md-4"><p><%= gig.description %></p></div>
+          <div class="col-md-1">&nbsp;</div>
+        </div>
+    <% end %>
     <div class="row" style="border-bottom: 1px solid #D9E8F5"><div class="col-md-12"><p>&nbsp;</p></div></div>
 <% end %>

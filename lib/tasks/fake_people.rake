@@ -114,10 +114,12 @@ namespace :db do
               sickChildren: [0,1].sample,
               profile_id: profile.id
           )
+          tmpNumber = rand(10..30)
           Gig.create!(
              profile_id: profile.id,
              jobName: Faker::Name.title,
              description: Faker::Lorem.paragraph(2, false, 4),
+             endDate: Faker::Date.forward(tmpNumber),
              job_id: [1,2].sample
           )
         end # 6.times

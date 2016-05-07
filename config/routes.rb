@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   # get '/profile/index' => 'profile#index'
 
+  match 'customers/:id/gig', to: 'customers#gig', via: [:get, :post], as: :customer_gig
   match 'customers/search', to: 'customers#search', via: [:get, :post]
   resources :customers
 

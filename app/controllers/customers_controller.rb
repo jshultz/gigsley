@@ -24,6 +24,11 @@ class CustomersController < ApplicationController
 
   end
 
+  def gig
+    @gig = Gig.find_by id: params[:id]
+    @profile = Profile.find_by id: @gig.profile_id
+  end
+
   def search
     @ip = request.remote_ip
     @location = request.location

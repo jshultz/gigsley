@@ -10,6 +10,7 @@ class CreateBioTable < ActiveRecord::Migration
       t.integer :maxHour
       t.integer :travel
       t.references :profile, index: true, foreign_key: true
+      t.timestamps null: false
     end
 
   end

@@ -6,6 +6,8 @@ class CreateGigsTable < ActiveRecord::Migration
       t.integer :awarded
       t.integer :job_id
       t.belongs_to :profile
+      t.date :endDate
+      t.timestamps null: false
     end
   end
 end
