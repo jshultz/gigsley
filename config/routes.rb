@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   match 'providers/search', to: 'providers#search', via: [:get, :post]
   resources :providers
 
+  match 'setup/create', to: 'setups#create', via: [:post], as: :setup_create
   match 'setup/:id/jobs', to: 'setups#jobs', via: [:get, :post], as: :setup_jobs
   match 'setup/:id/vitals', to: 'setups#vitals', via: [:get, :post], as: :setup_vitals
   match 'setup/:id/gig', to: 'setups#gigs', via: [:get, :post], as: :setup_gigs

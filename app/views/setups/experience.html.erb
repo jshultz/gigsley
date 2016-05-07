@@ -28,36 +28,36 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= bootstrap_form_for :experience, url: {action: 'experience'} do |f| %>
+            <%= simple_form_for :experience, url: {action: 'experience'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :specialNeeds, label: "Do you have experience with Special Needs?", checked: @user.profile.experience.present? ? @user.profile.experience.specialNeeds : nil %>
+                    <%= f.input :specialNeeds, as: :boolean, boolean_style: :inline, label: "Do you have experience with Special Needs?", checked: @user.profile.experience.present? ? @user.profile.experience.specialNeeds : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :infants, label: "Do you have experience caring for infants?", checked: @user.profile.experience.present? ? @user.profile.experience.infants : nil %>
+                    <%= f.input :infants, as: :boolean, boolean_style: :inline, label: "Do you have experience caring for infants?", checked: @user.profile.experience.present? ? @user.profile.experience.infants : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :twins, label: "Do you have experience caring for twins?", checked: @user.profile.experience.present? ? @user.profile.experience.twins : nil %>
+                    <%= f.input :twins, as: :boolean, boolean_style: :inline, label: "Do you have experience caring for twins?", checked: @user.profile.experience.present? ? @user.profile.experience.twins : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :homework, label: "Do you have experience providing homework help?", checked: @user.profile.experience.present? ? @user.profile.experience.homework : nil %>
+                    <%= f.input :homework, as: :boolean, boolean_style: :inline, label: "Do you have experience providing homework help?", checked: @user.profile.experience.present? ? @user.profile.experience.homework : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-10">
-                    <%= f.text_field :years, label: "How many paid years of experience do you have?", value: @user.profile.experience.present? ? @user.profile.experience.years : nil %>
+                    <%= f.input :years, as: :boolean, boolean_style: :inline, label: "How many paid years of experience do you have?", value: @user.profile.experience.present? ? @user.profile.experience.years : nil %>
                   </div>
                   <div class="col-md-2" style="vertical-align: bottom">Years.</div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :sickChildren, label: "Are you willing to care for sick children?", checked: @user.profile.experience.present? ? @user.profile.experience.sickChildren : nil %>
+                    <%= f.input :sickChildren, as: :boolean, boolean_style: :inline, label: "Are you willing to care for sick children?", checked: @user.profile.experience.present? ? @user.profile.experience.sickChildren : nil %>
                   </div>
                 </div>
                 <%= f.submit %>

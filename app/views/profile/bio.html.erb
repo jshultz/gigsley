@@ -27,43 +27,43 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= bootstrap_form_for :bio, url: {action: 'bio'} do |f| %>
+            <%= simple_form_for :bio, url: {action: 'bio'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :title, label: "Title", value: @user.profile.bio.present? ? @user.profile.bio.title : nil %>
+                    <%= f.input :title, as: :string, label: "Title", input_html: {value: @user.profile.bio.present? ? @user.profile.bio.title : nil} %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_area :experience, label: "Your Experience", value: @user.profile.bio.present? ? @user.profile.bio.experience : nil %>
+                    <%= f.input :experience, as: :text, label: "Your Experience", input_html: {value: @user.profile.bio.present? ? @user.profile.bio.experience : nil} %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :car, label: "Do you own a car?", checked: @user.profile.bio.present? ? @user.profile.bio.car : nil %>
+                    <%= f.input :car, as: :boolean, boolean_style: :inline, label: "Do you own a car?", checked: @user.profile.bio.present? ? @user.profile.bio.car : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :pets, label: "Are you ok to be around pets?", checked: @user.profile.bio.present? ? @user.profile.bio.pet : nil %>
+                    <%= f.input :pets, as: :boolean, boolean_style: :inline, label: "Are you ok to be around pets?", checked: @user.profile.bio.present? ? @user.profile.bio.pet : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :smoke, label: "Are you a smoker?", checked: @user.profile.bio.present? ? @user.profile.bio.smoke : nil %>
+                    <%= f.input :smoke, as: :boolean, boolean_style: :inline, label: "Are you a smoker?", checked: @user.profile.bio.present? ? @user.profile.bio.smoke : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <%= f.text_field :minHour, label: "Minimum/Hour", value: @user.profile.bio.present? ? @user.profile.bio.minHour : nil %>
+                    <%= f.input :minHour, as: :string, label: "Minimum/Hour", input_html: {value: @user.profile.bio.present? ? @user.profile.bio.minHour : nil} %>
                   </div>
                   <div class="col-md-6">
-                    <%= f.text_field :maxHour, label: "Maximum/Hour", value: @user.profile.bio.present? ? @user.profile.bio.maxHour : nil %>
+                    <%= f.input :maxHour, as: :string, label: "Maximum/Hour", input_html: {value: @user.profile.bio.present? ? @user.profile.bio.maxHour : nil} %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-10">
-                    <%= f.text_field :travel, label: "How far you willing to travel?", value: @user.profile.bio.present? ? @user.profile.bio.travel : nil %>
+                    <%= f.input :travel, as: :string, label: "How far you willing to travel?", input_html: {value: @user.profile.bio.present? ? @user.profile.bio.travel : nil} %>
                   </div>
                   <div class="col-md-2" style="vertical-align: bottom">Miles.</div>
                 </div>

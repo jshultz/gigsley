@@ -27,25 +27,25 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= bootstrap_form_for :schedule, url: {action: 'schedule'} do |f| %>
+            <%= simple_form_for :schedule, url: {action: 'schedule'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :shortNotice, label: "Are you available on short notice?", checked: @user.profile.schedule.present? ? @user.profile.schedule.shortNotice : nil %>
+                    <%= f.input :shortNotice, as: :boolean, boolean_style: :inline, label: "Are you available on short notice?", checked: @user.profile.schedule.present? ? @user.profile.schedule.shortNotice : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :summerMonths, label: "Do you have experience caring for infants?", checked: @user.profile.schedule.present? ? @user.profile.schedule.summerMonths : nil %>
+                    <%= f.input :summerMonths, as: :boolean, boolean_style: :inline, label: "Do you have experience caring for infants?", checked: @user.profile.schedule.present? ? @user.profile.schedule.summerMonths : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :beforeSchool, label: "Do you have experience caring for twins?", checked: @user.profile.schedule.present? ? @user.profile.schedule.beforeSchool : nil %>
+                    <%= f.input :beforeSchool, as: :boolean, boolean_style: :inline, label: "Do you have experience caring for twins?", checked: @user.profile.schedule.present? ? @user.profile.schedule.beforeSchool : nil %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :afterSchool, label: "Do you have experience providing homework help?", checked: @user.profile.schedule.present? ? @user.profile.schedule.afterSchool : nil %>
+                    <%= f.input :afterSchool, as: :boolean, boolean_style: :inline, label: "Do you have experience providing homework help?", checked: @user.profile.schedule.present? ? @user.profile.schedule.afterSchool : nil %>
                   </div>
                 </div>
                 <%= f.submit %>

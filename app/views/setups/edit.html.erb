@@ -27,40 +27,40 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= bootstrap_form_for :profile, url: {action: 'create'} do |f| %>
+            <%= simple_form_for :profile, url: setup_create_path, method: :post do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :street, value: @user.profile.present? ? @user.profile.street : nil  %>
+                    <%= f.input :street, as: :string, input_html: {value: @user.profile.present? ? @user.profile.street : ''}  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :city, value: @user.profile.present? ? @user.profile.city : nil  %>
+                    <%= f.input :city, as: :string,  input_html: {value: @user.profile.present? ? @user.profile.city : ''}  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :state, value: @user.profile.present? ? @user.profile.state : nil  %>
+                    <%= f.input :state, as: :string,  input_html: {value: @user.profile.present? ? @user.profile.state : ''}  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :home_phone, value: @user.profile.present? ? @user.profile.home_phone : nil  %>
+                    <%= f.input :home_phone, as: :tel,  input_html: {value: @user.profile.present? ? @user.profile.home_phone : ''}  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :mobile_phone, value: @user.profile.present? ? @user.profile.mobile_phone : nil  %>
+                    <%= f.input :mobile_phone, as: :tel,  input_html: {value: @user.profile.present? ? @user.profile.mobile_phone : ''}  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :customer, label: "Do you wish to register as a Customer?" %>
+                    <%= f.input :customer, label: "Do you wish to register as a Customer?", as: :boolean, boolean_style: :inline %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.check_box :provider, label: "Do you wish to register as a Provider?" %>
+                    <%= f.input :provider, label: "Do you wish to register as a Provider?", as: :boolean, boolean_style: :inline %>
                   </div>
                 </div>
 

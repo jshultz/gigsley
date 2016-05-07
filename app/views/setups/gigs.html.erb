@@ -31,25 +31,26 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= bootstrap_form_for :gig, url: {action: 'gigs'} do |f| %>
+            <%= simple_form_for :gig, url: {action: 'gigs'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :jobName, label: "Name(title) of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.hiring.jobName : nil  %>
+                    <%= f.input :jobName, as: :string, label: "Name(title) of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.hiring.jobName : nil  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :description, label: "Description of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.hiring.description : nil  %>
+                    <%= f.input :description, as: :text, label: "Description of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.hiring.description : nil  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.collection_select :job_id, Job.all, :id, :name %>
+                    <%= f.input :job_id, collection: Job.all %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.date_select :endDate, label: 'Date Posting Ends', class: 'datepicker' %>
+                    <%= f.input :endDate, as: :date, html5: true %>
+                    <%#= f.date_select :endDate, label: 'Date Posting Ends', class: 'datepicker' %>
                   </div>
                 </div>
                 <div class="row">

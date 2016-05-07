@@ -31,15 +31,15 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= bootstrap_form_for :profile, url: {action: 'jobs'} do |f| %>
+            <%= simple_form_for :profile, url: {action: 'jobs'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.collection_select :job_id, Job.all, :id, :name %>
+                    <%= f.input :job_id, collection: Job.all %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.text_field :skill_list, label: "Skill List (comma separated)", value: @user.profile.present? ? @user.profile.tag_list : nil if @user.profile.provider == true %>
+                    <%= f.input :skill_list, as: :string, label: "Skill List (comma separated)", value: @user.profile.present? ? @user.profile.tag_list : nil if @user.profile.provider == true %>
                   </div>
                 </div>
                 <div class="row">
