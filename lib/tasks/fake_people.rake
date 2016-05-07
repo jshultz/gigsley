@@ -35,19 +35,39 @@ namespace :db do
 
         1.times do |n|
         puts "[DEBUG] creating activity #{count} of ~6"
-        Profile.create!(
-                      street: parsed_address[0],
-                      city: parsed_address[1],
-                      state: parsed_address[2],
-                      mobile_phone: Faker::PhoneNumber.cell_phone,
-                      full_address: address.sample,
-                      user_id: user.id,
-                      job_id: [1,2].sample,
-                      skill_list: ['hugger', 'detail orientated', 'outoing', 'playful'].sample,
-                      provider: 1,
-                      customer: 0,
-                      terms: 1
+        profile = Profile.create!(
+              street: parsed_address[0],
+              city: parsed_address[1],
+              state: parsed_address[2],
+              mobile_phone: Faker::PhoneNumber.cell_phone,
+              full_address: address.sample,
+              user_id: user.id,
+              job_id: [1,2].sample,
+              skill_list: ['hugger', 'detail orientated', 'outoing', 'playful'].sample,
+              provider: 1,
+              customer: 0,
+              terms: 1
 
+        )
+        Experience.create!(
+            specialNeeds: [0,1].sample,
+            infants: [0,1].sample,
+            twins: [0,1].sample,
+            homework: [0,1].sample,
+            years: 15,
+            sickChildren: [0,1].sample,
+            profile_id: profile.id
+        )
+        Bio.create!(
+               title: Faker::Name.title,
+               experience: Faker::Lorem.paragraph(2, false, 4),
+               car: [0,1].sample,
+               pet: [0,1].sample,
+               smoke: [0,1].sample,
+               profile_id: profile.id,
+               minHour: 12,
+               maxHour: 15,
+               travel: 22,
         )
         end # 6.times
       end # user.present?
@@ -63,23 +83,42 @@ namespace :db do
         1.times do |n|
           puts "[DEBUG] creating activity #{count} of ~6"
           profile = Profile.create!(
-                      street: parsed_address[0],
-                      city: parsed_address[1],
-                      state: parsed_address[2],
-                      mobile_phone: Faker::PhoneNumber.cell_phone,
-                      full_address: address.sample,
-                      user_id: user.id,
-                      job_id: [1,2].sample,
-                      provider: 0,
-                      customer: 1,
-                      terms: 1
-
-                  )
+              street: parsed_address[0],
+              city: parsed_address[1],
+              state: parsed_address[2],
+              mobile_phone: Faker::PhoneNumber.cell_phone,
+              full_address: address.sample,
+              user_id: user.id,
+              job_id: [1,2].sample,
+              provider: 0,
+              customer: 1,
+              terms: 1
+          )
+          Bio.create!(
+              title: Faker::Name.title,
+              experience: Faker::Lorem.paragraph(2, false, 4),
+              car: [0,1].sample,
+              pet: [0,1].sample,
+              smoke: [0,1].sample,
+              profile_id: profile.id,
+              minHour: 12,
+              maxHour: 15,
+              travel: 22,
+          )
+          Experience.create!(
+              specialNeeds: [0,1].sample,
+              infants: [0,1].sample,
+              twins: [0,1].sample,
+              homework: [0,1].sample,
+              years: 15,
+              sickChildren: [0,1].sample,
+              profile_id: profile.id
+          )
           Gig.create!(
-                 profile_id: profile.id,
-                 jobName: Faker::Name.title,
-                 description: Faker::Name.title,
-                 job_id: [1,2].sample
+             profile_id: profile.id,
+             jobName: Faker::Name.title,
+             description: Faker::Lorem.paragraph(2, false, 4),
+             job_id: [1,2].sample
           )
         end # 6.times
       end # user.present?

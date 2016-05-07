@@ -35,42 +35,14 @@
     <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
     <div class="row">
       <div class="col-md-1">&nbsp;</div>
-
+        <div class="col-md-4"><h4><%= gig.jobName %></h4></div>
       <div class="col-md-1">&nbsp;</div>
     </div>
-    <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
-<% end %>
-
-<% @profiles.each do |profile| %>
-    <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
     <div class="row">
       <div class="col-md-1">&nbsp;</div>
-      <div class="col-md-1">
-        <% user = User.where(:id => profile.user_id).first %>
-        <% extraParam =  user.image.match("size=300x300") ? '' : "?type=large" %>
-        <% user_image = user.image.present? ? image_url(user.image + extraParam) : image_url('male_icon.svg') %>
-        <%=
-          link_to image_tag(user_image, class: 'img-responsive'), customer_path(profile)
-        %>
-      </div>
-      <div class="col-md-8">
-        <p>
-          <strong>
-            <%=
-              link_to profile.user.fullname.present? ? profile.user.fullname : profile.user.name, customer_path(profile)
-            %>
-          </strong>
-        </p>
-        <p>
-          <strong>Skills: </strong> <% user.profile.skill_list.each do |skill| %>
-              <%= skill %>,
-          <% end %>
-        </p>
-        <% if profile.experience.present? %>
-            <p><%= link_to (profile.experience.years) + ' years of experience.', customer_path(profile) %></p>
-        <% end %>
-      </div>
+      <div class="col-md-4"><p><%= gig.description %></p></div>
       <div class="col-md-1">&nbsp;</div>
     </div>
+    <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
     <div class="row" style="border-bottom: 1px solid #D9E8F5"><div class="col-md-12"><p>&nbsp;</p></div></div>
 <% end %>
