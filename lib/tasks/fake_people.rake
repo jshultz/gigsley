@@ -62,18 +62,24 @@ namespace :db do
 
         1.times do |n|
           puts "[DEBUG] creating activity #{count} of ~6"
-          Profile.create!(
-              street: parsed_address[0],
-              city: parsed_address[1],
-              state: parsed_address[2],
-              mobile_phone: Faker::PhoneNumber.cell_phone,
-              full_address: address.sample,
-              user_id: user.id,
-              job_id: [1,2].sample,
-              provider: 0,
-              customer: 1,
-              terms: 1
+          profile = Profile.create!(
+                      street: parsed_address[0],
+                      city: parsed_address[1],
+                      state: parsed_address[2],
+                      mobile_phone: Faker::PhoneNumber.cell_phone,
+                      full_address: address.sample,
+                      user_id: user.id,
+                      job_id: [1,2].sample,
+                      provider: 0,
+                      customer: 1,
+                      terms: 1
 
+                  )
+          Gig.create!(
+                 profile_id: profile.id,
+                 jobName: Faker::Name.title,
+                 description: Faker::Name.title,
+                 job_id: [1,2].sample
           )
         end # 6.times
       end # user.present?

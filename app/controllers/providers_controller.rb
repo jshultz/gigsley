@@ -1,6 +1,8 @@
 class ProvidersController < ApplicationController
   # before_action :set_provider, only: [:show, :edit, :update, :destroy]
 
+  # Providers Controller: Users who are Providers and looking for customers.
+
   # GET /providers
   # GET /providers.json
   def index

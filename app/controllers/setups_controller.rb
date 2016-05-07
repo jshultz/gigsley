@@ -64,12 +64,24 @@ class SetupsController < ApplicationController
 
         if @user.profile.provider == true
           redirect_to setup_vitals_path current_user.id
+        elsif @user.profile.customer == true
+          redirect_to setup_gigs_path current_user.id
         else
           redirect_to setup_thankyou_path
         end
 
       end
 
+    end
+  end
+
+  # Step 2a
+  def gigs
+    @user = User.where(id: current_user.id).first
+    if request.post?
+      if @user.profile.gigs.create(gigs_params)
+        redirect_to setup_vitals_path current_user.id
+      end
     end
   end
 
@@ -143,6 +155,9 @@ class SetupsController < ApplicationController
     end
     def experience_params
       params.require(:experience).permit(:specialNeeds, :infants, :twins, :homework, :years, :sickChildren)
+    end
+    def gigs_params
+      params.require(:gig).permit(:jobName, :description, :awarded, :job_id, :profile_id)
     end
     def schedule_params
       params.require(:schedule).permit(:shortNotice, :summerMonths, :beforeSchool, :afterSchool)

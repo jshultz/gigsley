@@ -10,24 +10,11 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   has_one :job
   has_one :bio
+  has_many :gigs
   has_one :experience
   has_one :schedule
   has_many :galleries
 
   pg_search_scope :profile_search, :against => [:first_name, :last_name]
 
-  # def customer
-  #   self.is_customer = false unless self.customer == false
-  #   true
-  # end
-  #
-  # def provider
-  #   self.is_provider = false unless self.provider == false
-  #   true
-  # end
-
-  # pg_search_scope :profile_search, :associated_against => {
-  #     :cheeses => [:kind, :brand],
-  #     :cracker => :kind
-  # }
 end

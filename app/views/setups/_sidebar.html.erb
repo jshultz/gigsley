@@ -6,7 +6,7 @@
 </div>
 <% if current_user.profile.present? && current_user.profile.customer == true %>
     <div class="row">
-      <div class="col-md-12"><p><%= link_to 'Hiring For?', setup_jobs_path(current_user.id), class: "btn btn-default btn-lg active" %></p></div>
+      <div class="col-md-12"><p><%= link_to 'Create a Gig?', setup_gigs_url(current_user.id), class: "btn btn-default btn-lg active" %></p></div>
     </div>
 <% end %>
 <div class="row">

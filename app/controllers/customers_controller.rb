@@ -1,6 +1,8 @@
 class CustomersController < ApplicationController
   # before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
+  # Customers Controller: Users who are looking for a Gig.
+
   # GET /customers
   # GET /customers.json
   def index
@@ -9,7 +11,11 @@ class CustomersController < ApplicationController
     @city = @location.city.present? ? @location.city : 'Ogden'
     @state = @location.state.present? ? @location.state : 'UT'
     @range = params['range'].present? ? params['range'] : 100
+    @gigs = Hash.new
     @profiles = Profile.near("#{@city}, #{@state}, US", @range).where(customer: true)
+    @profiles.each do |profile|
+    end
+
   end
 
   def search

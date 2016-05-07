@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   match 'setup/:id/jobs', to: 'setups#jobs', via: [:get, :post], as: :setup_jobs
   match 'setup/:id/vitals', to: 'setups#vitals', via: [:get, :post], as: :setup_vitals
+  match 'setup/:id/gig', to: 'setups#gigs', via: [:get, :post], as: :setup_gigs
   match 'setup/:id/bio', to: 'setups#bio', via: [:get, :post], as: :setup_bio
   match 'setup/:id/experience', to: 'setups#experience', via: [:get, :post], as: :setup_experience
   match 'setup/:id/schedule', to: 'setups#schedule', via: [:get, :post], as: :setup_schedule

@@ -1,0 +1,64 @@
+<h1>Create/Update Your Profile</h1>
+<div class="row">
+  <div class="col-md-3 col-md-offset-9"><%= link_to "Looking for Help?", profile_index_path %></div>
+</div>
+<div class="row">
+  <div class="col-md-3 col-md-offset-1">
+    <div class="row">
+      <div class="col-md-12 setupSidebarBorder">
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+        <%= render "setups/sidebar" %>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12 setupBorder">
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <% if @user.profile.provider == true %>
+                <p>Ready to find a job? Fill out basic account information to set up your account and get started. You can finish the rest of your profile later on.</p>
+            <% else %>
+                <p>Ready to find that person who will change your life? Just choose who you're looking for!</p>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= bootstrap_form_for :gig, url: {action: 'gigs'} do |f| %>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.text_field :jobName, label: "Name(title) of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.hiring.jobName : nil  %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.text_field :description, label: "Description of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.hiring.description : nil  %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.collection_select :job_id, Job.all, :id, :name %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.submit %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
