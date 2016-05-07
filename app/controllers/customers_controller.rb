@@ -11,9 +11,15 @@ class CustomersController < ApplicationController
     @city = @location.city.present? ? @location.city : 'Ogden'
     @state = @location.state.present? ? @location.state : 'UT'
     @range = params['range'].present? ? params['range'] : 100
-    @gigs = Hash.new
+    @gigs = []
     @profiles = Profile.near("#{@city}, #{@state}, US", @range).where(customer: true)
+
     @profiles.each do |profile|
+      if profile.gigs.present?
+        profile.gigs.each do |gig|
+          @gigs << gig
+        end
+      end
     end
 
   end
@@ -24,7 +30,11 @@ class CustomersController < ApplicationController
     @city = @location.city.present? ? @location.city : 'Ogden'
     @state = @location.state.present? ? @location.state : 'UT'
     @range = params['range'].present? ? params['range'] : 100
+    @gigs = []
     @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( customer: true, job_id: params["Job"][:job_id].to_i )
+    @profiles.each do |profile|
+      @gigs << profile
+    end
   end
 
   # GET /customers/1

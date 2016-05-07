@@ -30,6 +30,17 @@
 <div class="row">
   <div class="col-md-12">We are searching withing <%= @range %> miles of your location (<%= @city %>, <%= @state %>) for Customers.</div>
 </div>
+
+<% @gigs.each do |gig| %>
+    <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
+    <div class="row">
+      <div class="col-md-1">&nbsp;</div>
+
+      <div class="col-md-1">&nbsp;</div>
+    </div>
+    <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
+<% end %>
+
 <% @profiles.each do |profile| %>
     <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
     <div class="row">
