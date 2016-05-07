@@ -33,7 +33,11 @@ class CustomersController < ApplicationController
     @gigs = []
     @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( customer: true, job_id: params["Job"][:job_id].to_i )
     @profiles.each do |profile|
-      @gigs << profile
+      if profile.gigs.present?
+        profile.gigs.each do |gig|
+          @gigs << gig
+        end
+      end
     end
   end
 
