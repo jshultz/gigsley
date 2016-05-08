@@ -30,6 +30,8 @@ gem 'omniauth-facebook' # Add facebook login
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
+gem 'mailboxer' # Add Mailboxes for users!
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
