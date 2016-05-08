@@ -41,8 +41,8 @@
         </div>
         <div class="row">
           <div class="col-md-1">&nbsp;</div>
-          <div class="col-md-3">Posted: <%= gig.created_at %></div>
-          <div class="col-md-3">Expires at: <%= gig.endDate %></div>
+          <div class="col-md-3">Posted: <%= distance_of_time_in_words(gig.created_at, Time.now) %> ago.</div>
+          <div class="col-md-3">Expires: <%= distance_of_time_in_words(gig.endDate, Time.now, include_seconds: true) if gig.endDate.present? %> from now.</div>
           <div class="col-md-1">&nbsp;</div>
         </div>
         <div class="row">
