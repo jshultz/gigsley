@@ -50,7 +50,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :eligible, as: :check_boxes, label: "Are You Eligible To Work In The United States?", checked: @user.profile.eligible %>
+                    <%= f.input :eligible, as: :boolean, boolean_style: :inline, label: "Are You Eligible To Work In The United States?", checked: @user.profile.eligible %>
                   </div>
                 </div>
                 <%= f.submit %>
