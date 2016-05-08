@@ -55,12 +55,12 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :customer, label: "Do you wish to register as a Customer?", as: :boolean, boolean_style: :inline %>
+                    <%= f.input :customer, label: "Do you wish to register as a Customer?", as: :boolean, boolean_style: :inline, input_html: {value: @user.profile.present? ? @user.profile.customer : ''} %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :provider, label: "Do you wish to register as a Provider?", as: :boolean, boolean_style: :inline %>
+                    <%= f.input :provider, label: "Do you wish to register as a Provider?", as: :boolean, boolean_style: :inline, input_html: {value: @user.profile.present? ? @user.profile.provider : ''} %>
                   </div>
                 </div>
 
