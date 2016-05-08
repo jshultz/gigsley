@@ -13,7 +13,6 @@ class CustomersController < ApplicationController
     @range = params['range'].present? ? params['range'] : 100
     @gigs = []
     @profiles = Profile.near("#{@city}, #{@state}, US", @range).where(customer: true)
-
     @profiles.each do |profile|
       if profile.gigs.present?
         profile.gigs.each do |gig|
@@ -21,12 +20,20 @@ class CustomersController < ApplicationController
         end
       end
     end
-
   end
 
   def gig
     @gig = Gig.find_by id: params[:id]
     @profile = Profile.find_by id: @gig.profile_id
+  end
+
+  def listgigs
+    if current_user.id != params[:id].to_i
+      redirect_to profile_path current_user.id
+    end
+
+    @profile = Profile.find_by(user_id: params[:id].to_i)
+
   end
 
   def search

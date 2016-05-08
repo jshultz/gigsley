@@ -42,16 +42,27 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="/profile/index" >View All Profiles</a></li>
-              <li><a href="/profile/<%= current_user.id %>" >View Your Profile</a></li>
-              <li><a href="/profile/<%= current_user.id %>/edit" >Edit Your Profile</a></li>
-              <li><a href="/galleries">Create/Edit Your Personal Gallery</a></li>
+              <% if @user.present? && (@user.profile.blank? || @user.profile.bio.blank?) %>
+                  <li><a href="/setups/<%= current_user.id %>/edit" >Edit Your Profile</a></li>
+              <% else %>
+                  <li><a href="/profile/index" >View All Profiles</a></li>
+                  <li><a href="/profile/<%= current_user.id %>" >View Your Profile</a></li>
+                  <li><a href="/profile/<%= current_user.id %>/edit" >Edit Your Profile</a></li>
+                  <li><a href="/galleries">Create/Edit Your Personal Gallery</a></li>
+              <% end %>
             </ul>
           </li>
         <% end %>
         <% if current_user %>
           <% if !current_user.profile.blank? && current_user.profile.provider == true %>
-              <li role="presentation"><a href="/customers">Looking for a Gig!</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gigs<span class="caret"></span> </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/customers">Looking for a Gig!</a></li>
+                  <li><%#= link_to 'What Job?', setup_jobs_path(current_user.id), class: "btn btn-default btn-lg active" %></li>
+                  <li><%= link_to 'View Your Gigs', customer_listgigs_path(current_user.id) %></li>
+                </ul>
+              </li>
           <% end %>
           <% if !current_user.profile.blank? && current_user.profile.customer == true %>
               <li role="presentation"><a href="/providers">Hire Someone</a></li>

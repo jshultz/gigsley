@@ -30,12 +30,18 @@ class ProfileController < ApplicationController
   def edit
     @user = User.where(id: current_user.id).first
 
-    if @user.profile.blank? || @user.profile.bio.blank?
-      redirect_to edit_setup_path current_user.id
+    if request.post?
+      if @user.profile.update_attributes profile_params
+        redirect_to profile_path
+      end
     end
-    if current_user.id != params[:id].to_i
-      redirect_to profile_path
-    end
+
+    # if @user.profile.blank? || @user.profile.bio.blank?
+    #   redirect_to edit_setup_path current_user.id
+    # end
+    # if current_user.id != params[:id].to_i
+    #   redirect_to profile_path
+    # end
   end
 
 

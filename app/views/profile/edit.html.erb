@@ -27,7 +27,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <%= simple_form_for :profile, url: profile_path, do |f| %>
+            <%= simple_form_for :profile, url: profile_edit_path do |f| %>
                 <div class="row">
                   <div class="col-md-12">
                     <%= f.input :street, as: :string, input_html: {value: @user.profile.present? ? @user.profile.street : ''}  %>

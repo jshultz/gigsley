@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12"><h1>Your Gigs</h1></div>
+</div>
+<% @profile.gigs.each do |gig| %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to customer_gig_path gig.id do %>
+            <p><strong><%= gig.jobName %></strong><br/><%= gig.description %></p>
+        <% end %>
+      </div>
+    </div>
+<% end %>
