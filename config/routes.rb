@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   match 'customers/:id/gig', to: 'customers#gig', via: [:get, :post], as: :customer_gig
   match 'customers/:id/listgigs', to: 'customers#listgigs', via: [:get], as: :customer_listgigs
   match 'customers/search', to: 'customers#search', via: [:get, :post]
+  match 'customers/:id/emailgig/:gig', to: 'customers#emailgig', via: [:get, :post], as: :customer_email_gig
   resources :customers
 
   resources :galleries do

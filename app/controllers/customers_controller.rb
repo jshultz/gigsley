@@ -117,6 +117,15 @@ class CustomersController < ApplicationController
     end
   end
 
+  def emailgig
+    gig = Gig.find_by id: params[:gig]
+    alfa = Profile.find_by id: gig.profile_id
+    beta = Profile.find_by user_id: current_user.id
+    alfa.send_message(beta, "Body", "subject")
+
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
