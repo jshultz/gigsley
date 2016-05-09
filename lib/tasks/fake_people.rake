@@ -36,6 +36,7 @@ namespace :db do
         1.times do |n|
         puts "[DEBUG] creating activity #{count} of ~6"
         profile = Profile.create!(
+            name: Faker::Name.name,
             email: Faker::Internet.email,
             street: parsed_address[0],
             city: parsed_address[1],
@@ -84,6 +85,7 @@ namespace :db do
         1.times do |n|
           puts "[DEBUG] creating activity #{count} of ~6"
           profile = Profile.create!(
+              name: Faker::Name.name,
               email: Faker::Internet.email,
               street: parsed_address[0],
               city: parsed_address[1],
