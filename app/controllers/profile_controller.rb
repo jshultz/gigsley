@@ -111,7 +111,7 @@ class ProfileController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :provider, :customer, :job_id )
+    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :provider, :customer, :job_id, :email )
   end
   def bio_params
     params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel)

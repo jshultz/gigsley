@@ -30,6 +30,11 @@
             <%= simple_form_for :profile, url: setup_create_path, method: :post do |f| %>
                 <div class="row">
                   <div class="col-md-12">
+                    <%= f.input :email, as: :email, input_html: {value: @user.profile.present? ? @user.profile.email : ''}  %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
                     <%= f.input :street, as: :string, input_html: {value: @user.profile.present? ? @user.profile.street : ''}  %>
                   </div>
                 </div>

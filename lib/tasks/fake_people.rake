@@ -36,17 +36,18 @@ namespace :db do
         1.times do |n|
         puts "[DEBUG] creating activity #{count} of ~6"
         profile = Profile.create!(
-              street: parsed_address[0],
-              city: parsed_address[1],
-              state: parsed_address[2],
-              mobile_phone: Faker::PhoneNumber.cell_phone,
-              full_address: address.sample,
-              user_id: user.id,
-              job_id: [1,2].sample,
-              skill_list: ['hugger', 'detail orientated', 'outoing', 'playful'].sample,
-              provider: 1,
-              customer: 0,
-              terms: 1
+            email: Faker::Internet.email,
+            street: parsed_address[0],
+            city: parsed_address[1],
+            state: parsed_address[2],
+            mobile_phone: Faker::PhoneNumber.cell_phone,
+            full_address: address.sample,
+            user_id: user.id,
+            job_id: [1,2].sample,
+            skill_list: ['hugger', 'detail orientated', 'outoing', 'playful'].sample,
+            provider: 1,
+            customer: 0,
+            terms: 1
 
         )
         Experience.create!(
@@ -83,6 +84,7 @@ namespace :db do
         1.times do |n|
           puts "[DEBUG] creating activity #{count} of ~6"
           profile = Profile.create!(
+              email: Faker::Internet.email,
               street: parsed_address[0],
               city: parsed_address[1],
               state: parsed_address[2],
