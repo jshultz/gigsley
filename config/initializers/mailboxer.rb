@@ -4,7 +4,7 @@ Mailboxer.setup do |config|
   config.uses_emails = true # we're using Heroku/Postmark
 
   #Configures the default from for emails sent for Messages and Notifications
-  config.default_from = "no-reply@gigsley.com"
+  config.default_from = "postmaster@gigsley.com"
 
   #Configures the methods needed by mailboxer
   config.email_method = :mailboxer_email
