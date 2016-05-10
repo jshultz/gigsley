@@ -123,6 +123,13 @@ class CustomersController < ApplicationController
     beta = Profile.find_by user_id: current_user.id
     alfa.send_message(beta, "Body", "subject")
 
+    mail(
+        :subject => 'Hello from Postmark',
+        :to  => 'vin.hsieh@gmail.com',
+        :from => 'postmaster@gigsley.com',
+        :html_body => '<strong>Hello</strong> dear Postmark user.',
+        :track_opens => 'true')
+
     redirect_to :back
   end
 
