@@ -1,7 +1,7 @@
 Mailboxer.setup do |config|
 
   #Configures if you application uses or not email sending for Notifications and Messages
-  config.uses_emails = false # we're using Heroku/Sendgird
+  config.uses_emails = true # we're using Heroku/Postmark
 
   #Configures the default from for emails sent for Messages and Notifications
   config.default_from = "no-reply@gigsley.com"
