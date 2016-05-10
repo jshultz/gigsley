@@ -157,7 +157,7 @@ class SetupsController < ApplicationController
       params.require(:experience).permit(:specialNeeds, :infants, :twins, :homework, :years, :sickChildren)
     end
     def gigs_params
-      params.require(:gig).permit(:jobName, :description, :awarded, :job_id, :profile_id)
+      params.require(:gig).permit(:jobName, :description, :awarded, :job_id, :profile_id, :endDate)
     end
     def schedule_params
       params.require(:schedule).permit(:shortNotice, :summerMonths, :beforeSchool, :afterSchool)

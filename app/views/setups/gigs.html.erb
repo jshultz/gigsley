@@ -34,12 +34,13 @@
             <%= simple_form_for :gig, url: {action: 'gigs'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :jobName, as: :string, label: "Name(title) of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.hiring.jobName : nil  %>
+                    <% byebug %>
+                    <%= f.input :jobName, as: :string, label: "Name(title) of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.gigs.jobName : nil  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :description, as: :text, label: "Description of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.hiring.description : nil  %>
+                    <%= f.input :description, as: :text, label: "Description of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.gigs.description : nil  %>
                   </div>
                 </div>
                 <div class="row">
@@ -50,7 +51,6 @@
                 <div class="row">
                   <div class="col-md-12">
                     <%= f.input :endDate, as: :date, html5: true %>
-                    <%#= f.date_select :endDate, label: 'Date Posting Ends', class: 'datepicker' %>
                   </div>
                 </div>
                 <div class="row">

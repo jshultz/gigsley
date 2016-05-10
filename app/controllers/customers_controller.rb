@@ -121,7 +121,9 @@ class CustomersController < ApplicationController
     gig = Gig.find_by id: params[:gig]
     alpha = Profile.find_by id: gig.profile_id
     beta = Profile.find_by user_id: current_user.id
-    beta.send_message(alpha, "Body", "subject")
+    subject = 'Regarding: ' + gig.jobName
+    body = "#{beta.name} is interested in the #{gig.jobName} position you have listed."
+    beta.send_message(alpha, body, subject)
 
     redirect_to :back
   end
