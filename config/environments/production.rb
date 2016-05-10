@@ -3,11 +3,22 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default_url_options = { :host => 'http://calm-springs-53870.herokuapp.com' }
 
-  config.action_mailer.default_url_options = { :host => 'shrouded-mountain-9994.herokuapp.com' }
-
-  config.action_mailer.delivery_method = :postmark
-  config.action_mailer.postmark_settings = { :api_token => "2640f5b3-438c-4f60-b502-b8fc765d0c42" }
+  config.action_mailer.smtp_settings = {
+      :user_name => ENV["SENDGRID_USERNAME"],
+      :password => ENV["SENDGRID_PASSWORD"],
+      :address => 'smtp.sendgrid.net',
+      :domain => 'myapp.herokuapp.com',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
