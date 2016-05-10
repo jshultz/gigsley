@@ -18,13 +18,21 @@ class Profile < ActiveRecord::Base
 
   pg_search_scope :profile_search, :against => [:first_name, :last_name]
 
+  def mailboxer_name
+    self.name
+  end
+
+  def mailboxer_email(object)
+    self.email
+  end
+
   #Returning the email address of the model if an email should be sent for this object (Message or Notification).
   #If no mail has to be sent, return nil.
-  def mailboxer_email(object)
-    #Check if an email should be sent for that object
-    #if true
-    return "define_email@on_your.model"
-    #if false
-    #return nil
-  end
+  # def mailboxer_email(object)
+  #   #Check if an email should be sent for that object
+  #   #if true
+  #   return "define_email@on_your.model"
+  #   #if false
+  #   #return nil
+  # end
 end
