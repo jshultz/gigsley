@@ -41,14 +41,14 @@
         </div>
         <div class="row">
           <div class="col-md-1">&nbsp;</div>
-          <div class="col-md-3">Posted: <%= distance_of_time_in_words(gig.created_at, Time.now) %> ago.</div>
-          <div class="col-md-3">Expires: <%= distance_of_time_in_words(gig.endDate, Time.now, include_seconds: true) if gig.endDate.present? %> from now.</div>
+          <div class="col-md-4">Posted: <%= distance_of_time_in_words(gig.created_at, Time.now) %> ago.</div>
+          <div class="col-md-4">Expires: <%= distance_of_time_in_words(gig.endDate, Time.now, include_seconds: true) if gig.endDate.present? %> from now.</div>
           <div class="col-md-1">&nbsp;</div>
         </div>
         <div class="row">
           <div class="col-md-1">&nbsp;</div>
           <div class="col-md-4"><p><%= gig.description %></p></div>
-          <div class="col-md-4"><p><%= link_to 'Email Customer', customer_email_gig_path(current_user.id, gig.id)  %></p></div>
+          <div class="col-md-4"><p><%= link_to 'Email Gig Poster', customer_email_gig_path(current_user.id, gig.id), class: 'email'  %></p></div>
           <div class="col-md-1">&nbsp;</div>
         </div>
     <% end %>

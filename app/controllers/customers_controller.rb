@@ -119,9 +119,9 @@ class CustomersController < ApplicationController
 
   def emailgig
     gig = Gig.find_by id: params[:gig]
-    alfa = Profile.find_by id: gig.profile_id
+    alpha = Profile.find_by id: gig.profile_id
     beta = Profile.find_by user_id: current_user.id
-    alfa.send_message(beta, "Body", "subject")
+    beta.send_message(alpha, "Body", "subject")
 
     redirect_to :back
   end
