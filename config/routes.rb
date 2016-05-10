@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   # get '/profile/index' => 'profile#index'
 
+  resources :conversations
+
   match 'customers/:id/gig', to: 'customers#gig', via: [:get, :post], as: :customer_gig
   match 'customers/:id/listgigs', to: 'customers#listgigs', via: [:get], as: :customer_listgigs
   match 'customers/search', to: 'customers#search', via: [:get, :post]
@@ -31,6 +33,8 @@ Rails.application.routes.draw do
   resources :galleries do
     resources :pictures
   end
+
+  resources :messages
 
   match 'profile/index', to: 'profile#index', via: [:get, :post], as: :profile_index
   match 'profile/:id/edit', to: 'profile#edit', via: [:get, :post], as: :profile_edit
