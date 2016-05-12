@@ -64,7 +64,7 @@ class SetupsController < ApplicationController
 
         if @user.profile.customer == true
           redirect_to setup_gigs_path current_user.id
-        elsif @user.profile.provier == true
+        elsif @user.profile.provider == true
           redirect_to setup_vitals_path current_user.id
         else
           redirect_to setup_thankyou_path
