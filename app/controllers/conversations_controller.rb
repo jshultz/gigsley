@@ -87,9 +87,9 @@ class ConversationsController < ApplicationController
   end
 
   def check_current_subject_in_conversation
-    @conversation = Conversation.find_by_id(params[:id])
+    @conversation = Mailboxer::Conversation.find_by_id(params[:id])
 
-    if @conversation.nil? or !@conversation.is_participant?(@actor)
+    if @conversation.nil? or !@conversation.is_participant?(@user)
       redirect_to conversations_path(:box => @box)
       return
     end

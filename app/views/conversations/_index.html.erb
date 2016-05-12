@@ -1,11 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Conversations</h1>
-
 <div class="conversations">
-  <%= render :partial => 'conversations' %>
+  <%= render @conversations %>
 
-  <%#= render partial: 'layouts/more',
+  <%= render partial: 'layouts/more',
              locals: {
                  path: conversations_path,
                  per_page: 9,
