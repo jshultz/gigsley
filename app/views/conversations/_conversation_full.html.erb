@@ -7,12 +7,12 @@
           <%= image_tag('/assets/icons/btn_delete.svg') %>
       <% end %>
 
-      <%#= link_to(image_tag('icons/btn_delete.svg',
-                            :atl => t('mailboxer.delete'),
-                            :title => t('mailboxer.delete')),
-                                           conversation_path(conversation, :location => 'conversation', :box => @box),
-                                           :confirm => t('mailboxer.delete_confirm', :object => conversation.subject),
-                                           :method => :delete, :remote => true) %>
+      <%= link_to(image_tag('/assets/icons/cancel-icon.svg', :alt => 'delete', :title => 'delete'),
+                  conversation_path(conversation, :location => @box,
+                                    :box => @box,
+                                    :page => params[:page]),
+                  data: { confirm: "Are you sure?" },
+                  method: :delete )%>
   <% end %>
 </div>
 <div class="clearfloat"></div>
@@ -24,9 +24,11 @@
 </div>
 <div class="messages">
   <% @receipts.each do |receipt| %>
-      <% message = receipt.message %>
-      <% read_class = message.is_unread?(@actor) ? 'unread' : '' %>
-      <%= render :partial => "messages/message",:object => message, :locals => {:read_class => read_class} %>
+      <% if receipt.mailbox_type == @box %>
+          <% message = receipt.message %>
+          <% read_class = message.is_unread?(@actor) ? 'unread' : '' %>
+          <%= render :partial => "messages/message",:object => message, :locals => {:read_class => read_class} %>
+      <% end %>
   <% end %>
 
   <% unless @box.eql?'trash' %>

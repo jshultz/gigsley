@@ -2,15 +2,15 @@
 
     <div class="content_left">
       <div class="avatar">
-        <%#= link_to image_tag(conversation.last_sender.logo.url(:small),
+        <%= link_to image_tag(conversation.last_sender.user.image,
                               :title => conversation.last_sender.name,
                               :alt => conversation.last_sender.name),
-                    conversation.last_sender.subject %>
+                    conversation.last_sender.name %>
       </div>
 
       <header>
         <h5>
-          <%#= link_to truncate_name(conversation.last_sender.name), conversation.last_sender.subject %>
+          <%= link_to conversation.last_sender.name, conversation.last_sender %>
         </h5>
         <div class="date">
           Time Sent: <%= time_ago_in_words(conversation.updated_at) %>
@@ -28,14 +28,12 @@
       <% unless @box.eql?'trash' %>
           <div class="action">
 
-            <%= link_to(image_tag('cancel.png', :alt => t('mailboxer.delete'), :title => t('mailboxer.delete')),
+            <%= link_to(image_tag('/assets/icons/cancel-icon.svg', :alt => 'delete', :title => 'delete'),
                         conversation_path(conversation, :location => @box,
                                           :box => @box,
                                           :page => params[:page]),
-                        :confirm => t('mailboxer.delete_confirm',
-                                      :object => conversation.subject),
-                        :method => :delete,
-                        :remote => true) %>
+                        data: { confirm: "Are you sure?" },
+                        method: :delete )%>
           </div>
       <% end %>
 
