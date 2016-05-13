@@ -28,12 +28,12 @@ class ConversationsController < ApplicationController
 
   def update
     if params[:untrash].present?
-      @conversation.untrash(@actor)
+      @conversation.untrash(@user)
     end
 
     if params[:reply_all].present?
       last_receipt = @mailbox.receipts_for(@conversation).last
-      @receipt = @actor.reply_to_all(last_receipt, params[:body])
+      @receipt = @user.reply_to_all(last_receipt, params[:body])
     end
 
     if @box.eql? 'trash'
@@ -48,7 +48,7 @@ class ConversationsController < ApplicationController
 
   def destroy
 
-    @conversation.move_to_trash(@actor)
+    @conversation.move_to_trash(@user)
 
     respond_to do |format|
       format.html {
