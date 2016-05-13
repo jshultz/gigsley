@@ -34,7 +34,6 @@
             <%= simple_form_for :gig, url: {action: 'gigs'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <% byebug %>
                     <%= f.input :jobName, as: :string, label: "Name(title) of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @user.profile.gigs.jobName : nil  %>
                   </div>
                 </div>

@@ -30,7 +30,6 @@
   <div class="col-md-12">
     <div class="participants">
       <h3>Participants:</h3>
-      <% byebug %>
       <% conversation.recipients.each do |recp| %>
           <%= link_to image_tag(recp.user.image, :title=>recp.name, :alt => recp.name), recp.name %>
       <% end %>
