@@ -1,13 +1,12 @@
-<%#= location(
+<div class="row">
+  <div class="col-md-12">
+    <%#= location(
         link_to(t('message.' + @box), conversations_path(:box => @box),:remote => true),
         link_to(truncate(@conversation.subject, :length => 45), conversation_path(@conversation.id,:box => @box,:page => params[:page]))
     ) %>
+  </div>
+</div>
 
-<br class="clearfloat" />
-<div class="space_center">
-</div>
-<div class="space_center">
-</div>
 <div class="conversation_full">
   <%= render :partial => 'conversation_full', :locals =>{:conversation => @conversation} %>
 </div>

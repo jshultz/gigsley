@@ -48,7 +48,7 @@
         <div class="row">
           <div class="col-md-1">&nbsp;</div>
           <div class="col-md-4"><p><%= gig.description %></p></div>
-          <div class="col-md-4"><p><%= link_to 'Email Gig Poster', customer_email_gig_path(current_user.id, gig.id), class: 'email'  %></p></div>
+          <div class="col-md-4"><p><%= link_to 'Email Gig Poster', customer_email_gig_path(gig.profile_id, gig.id), class: 'email'  %></p></div>
           <div class="col-md-1">&nbsp;</div>
         </div>
     <% end %>

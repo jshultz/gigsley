@@ -1,14 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12"><p id="notice"><%= notice %></p></div>
+</div>
+<div class="row">
+  <div class="col-md-12"><h1>Listing Conversations</h1>
+  </div>
+</div>
 
-<h1>Listing Conversations</h1>
+<div class="row">
+  <div class="col-md-12" class="conversations">
+    <%= render :partial => 'conversations' %>
 
-<div class="conversations">
-  <%= render :partial => 'conversations' %>
-
-  <%#= render partial: 'layouts/more',
+    <%#= render partial: 'layouts/more',
              locals: {
                  path: conversations_path,
                  per_page: 9,
                  total: @conversations.total_count
              } %>
+  </div>
 </div>
+
+

@@ -1,27 +1,43 @@
-<div class="title">
-  <h2><%= conversation.subject %></h2>
+<div class="row">
+  <div class="col-md-12">
+    <div class="title">
+      <h2><%= conversation.subject %></h2>
+    </div>
+  </div>
 </div>
-<div class="action">
-  <% unless @box.eql?'trash' %>
-      <%= link_to conversation_path(conversation, :location => 'conversation', :box => @box) do %>
-          <%= image_tag('/assets/icons/btn_delete.svg') %>
-      <% end %>
+<div class="row">
+    <div class="action">
+      <% unless @box.eql?'trash' %>
+          <div class="col-md-1">
+            <%= link_to conversation_path(conversation, :location => 'conversation', :box => @box) do %>
+                <%= image_tag('/assets/icons/btn_delete.svg') %>
+            <% end %>
+          </div>
 
-      <%= link_to(image_tag('/assets/icons/cancel-icon.svg', :alt => 'delete', :title => 'delete'),
-                  conversation_path(conversation, :location => @box,
-                                    :box => @box,
-                                    :page => params[:page]),
-                  data: { confirm: "Are you sure?" },
-                  method: :delete )%>
-  <% end %>
+          <div class="col-md-1">
+            <%= link_to(image_tag('/assets/icons/cancel-icon.svg', :alt => 'delete', :title => 'delete'),
+                        conversation_path(conversation, :location => @box,
+                                          :box => @box,
+                                          :page => params[:page]),
+                        data: { confirm: "Are you sure?" },
+                        method: :delete )%>
+          </div>
+      <% end %>
+    </div>
 </div>
-<div class="clearfloat"></div>
-<div class="participants">
-  <h3>Participants:</h3>
-  <% conversation.recipients.each do |recp| %>
-      <%= link_to image_tag(recp.user.image, :title=>recp.name, :alt => recp.name), recp.name %>
-  <% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="participants">
+      <h3>Participants:</h3>
+      <% byebug %>
+      <% conversation.recipients.each do |recp| %>
+          <%= link_to image_tag(recp.user.image, :title=>recp.name, :alt => recp.name), recp.name %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
 <div class="messages">
   <% @receipts.each do |receipt| %>
       <% if receipt.mailbox_type == @box %>
@@ -32,32 +48,35 @@
   <% end %>
 
   <% unless @box.eql?'trash' %>
-      <br>
-      <%= form_tag conversation_path(conversation), :method => :put, :class => "cont_conversation" do %>
-          <% if @receipt and @receipt.errors.any? %>
-              <div class="error">
-                <h2><%= pluralize(@receipt.errors.count, "error") %> prohibited this message from being sent:</h2>
-                <ul>
-                  <% @receipt.errors.full_messages.each do |msg| %>
-                      <li>
-                        <%= msg %>
-                      </li>
-                  <% end %>
-                </ul>
+      <div class="row">
+        <div class="col-md-12">
+          <%= form_tag conversation_path(conversation), :method => :put, :class => "cont_conversation" do %>
+              <% if @receipt and @receipt.errors.any? %>
+                  <div class="error">
+                    <h2><%= pluralize(@receipt.errors.count, "error") %> prohibited this message from being sent:</h2>
+                    <ul>
+                      <% @receipt.errors.full_messages.each do |msg| %>
+                          <li>
+                            <%= msg %>
+                          </li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+              <div class="block">
+                <div class="form_row">
+                  Answer
+                </div>
+                <div class="form_row">
+                  <%= text_area_tag :body, nil,:rows =>6, :cols=> 53, :class => "required form_tag" %>
+                </div>
+                <div class="actions center">
+                  <%= submit_tag "reply", :name => :reply_all,:class => "button" %>
+                </div>
               </div>
           <% end %>
-          <div class="block">
-            <div class="form_row">
-              Answer
-            </div>
-            <div class="form_row">
-              <%= text_area_tag :body, nil,:rows =>6, :cols=> 53, :class => "required form_tag" %>
-            </div>
-            <div class="actions center">
-              <%= submit_tag "reply", :name => :reply_all,:class => "button" %>
-            </div>
-          </div>
-      <% end %>
+        </div>
+      </div>
   <%end %>
 </div>
 <%= javascript_tag do %>

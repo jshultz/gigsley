@@ -1,32 +1,45 @@
-<%= div_for(message, :class => read_class) do%>
-    <div class="sender_photo">
+<div class="row">
+  <div class="col-md-12">
+    <%= div_for(message, :class => read_class) do%>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sender_photo">
+              <% link_to image_tag(message.sender.user.image,
+                                   :title => message.sender.name, :alt => message.sender.name),
+                         message.sender %>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
 
-      <% link_to image_tag(message.sender.user.image,
-                            :title => message.sender.name, :alt => message.sender.name),
-                  message.subject %>
-    </div>
-    <div class="container">
-      <div class="header">
-        <div class="content_left">
-          <div class="sender_name">
-            <%= link_to message.sender.name, message.subject %>
+              <div class="header">
+                <div class="col-md-3">
+                  <div class="content_left">
+                    <div class="sender_name">
+                      <%= link_to message.sender.name, message.subject %>
+                    </div>
+                    <div class="date">
+                      Time Sent: <%= time_ago_in_words(message.updated_at) %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-9">
+                  <div class="content_right">
+                    <div class="subject">
+                      <%= truncate(message.subject, :length => 70) %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
           </div>
-          <div class="date">
-            Time Sent: <%= time_ago_in_words(message.updated_at) %>
+          <div class="row body">
+            <div class="col-md-12">
+              <%= raw(message.body) %>
+            </div>
           </div>
         </div>
-        <div class="content_right">
-          <div class="subject">
-            <%= truncate(message.subject, :length => 70) %>
-          </div>
-        </div>
-        <div class="clearfloat">
-        </div>
-      </div>
-      <div class="body">
-        <%= raw(message.body) %>
-      </div>
-    </div>
-    <div class="clearfloat">
-    </div>
-<% end %>
+    <% end %>
+  </div>
+</div>
