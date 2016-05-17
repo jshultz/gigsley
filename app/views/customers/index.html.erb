@@ -5,25 +5,7 @@
         <h1>Gigs</h1>
       </div>
     </div>
-    <%= bootstrap_form_tag url: '/customers/search', layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-7" do |f| %>
-        <div class="col-md-6">
-            <%
-              job_options = Job.all.map do |s|
-                [ s.name, s.id ]
-              end
-            %>
-            <%= select("Job", :job_id, options_for_select(job_options),
-                       { include_blank: "None" }, { class: "form-control" })
-            %>
-        </div>
-        <div class="col-md-4">
-          <%= f.select :range, [[10, "10"], [20, "20"], [30, "30"], [100, "100"]],
-                       { label: "Distance:"  },
-                       { class: "selectpicker" }
-          %>
-        </div>
-        <%= f.submit "Update Search" %>
-    <% end %>
+    <%= render partial: 'form' %>
   </div>
 </div>
 

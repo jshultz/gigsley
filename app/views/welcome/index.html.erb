@@ -1,14 +1,31 @@
 <div class="row application-body">
 	<div class="col-md-12">
 		<div align="center" style="padding: 10% 0 20%">
-			<h1 id="h1">
-			  Welcome To Gigsley
-			</h1>
-      <div
-        class="fb-like"
-        data-share="true"
-        data-width="450"
-        data-show-faces="true">
+			<div class="row">
+        <div class="col-md-12">
+          <h1 id="h1">
+            Welcome To Gigsley
+          </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <% if !current_user.profile.blank? && current_user.profile.provider == true %>
+            <%= render partial: 'customers/form' %>
+          <% else %>
+            <%= render partial: 'providers/form' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div
+          class="fb-like"
+          data-share="true"
+          data-width="450"
+          data-show-faces="true">
+          </div>
+        </div>
       </div>
 		</div>
 	</div>

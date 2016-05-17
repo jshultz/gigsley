@@ -20,7 +20,7 @@ class ProvidersController < ApplicationController
     @city = @location.city.present? ? @location.city : 'Ogden'
     @state = @location.state.present? ? @location.state : 'UT'
     @range = params['range'].present? ? params['range'] : 100
-    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( provider: true, job_id: params[:job_id].to_i )
+    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( provider: true, job_id: params[:provider][:job].to_i )
   end
 
   # GET /providers/1

@@ -1,17 +1,18 @@
-<%= form_for(@provider) do |f| %>
-  <% if @provider.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+<%= simple_form_for(:provider, url: '/providers/search') do |f| %>
+    <div class="col-md-6">
+      <%
+        job_options = Job.all.map do |s|
+          [ s.name, s.id ]
+        end
+      %>
+      <%= f.select :job, options_for_select(job_options), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
 
-      <ul>
-      <% @provider.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="col-md-4">
+      <%= f.select :range, [[10, "10"], [20, "20"], [30, "30"], [100, "100"]],
+                   { label: "Distance:"  },
+                   { class: "form-control selectpicker" }
+      %>
+    </div>
+    <%= f.button :submit, "Search Providers", class: '' %>
 <% end %>

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   match 'customers/:id/gig', to: 'customers#gig', via: [:get, :post], as: :customer_gig
   match 'customers/:id/listgigs', to: 'customers#listgigs', via: [:get], as: :customer_listgigs
-  match 'customers/search', to: 'customers#search', via: [:get, :post]
+  match 'customers/search', to: 'customers#search', via: [:get, :post], as: :customer_search_path
   match 'customers/:id/emailgig/:gig', to: 'customers#emailgig', via: [:get, :post], as: :customer_email_gig
   resources :customers
 
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   resources :profile
 
-  match 'providers/search', to: 'providers#search', via: [:get, :post]
+  match 'providers/search', to: 'providers#search', via: [:get, :post], as: :provider_search_path
   resources :providers
 
   match 'setup/create', to: 'setups#create', via: [:post], as: :setup_create
