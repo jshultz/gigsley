@@ -3,7 +3,7 @@
 		<div align="center" style="padding: 10% 0 20%">
 			<div class="row">
         <div class="col-md-12">
-          <h1 id="h1">
+          <h1>
             Welcome To Gigsley
           </h1>
         </div>
@@ -11,9 +11,17 @@
       <div class="row">
         <div class="col-md-12">
           <% if !current_user.profile.blank? && current_user.profile.provider == true %>
-            <%= render partial: 'customers/form' %>
+              <%#= render partial: 'welcome/customer_form' %>
+              <%= simple_form_for(:provider, url: '/providers/search') do |f| %>
+                  <div class="col-md-6 col-md-offset-2">
+                    <%= f.input :search, { class: 'form-control', label: false } %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= f.button :submit, "Search Providers" %>
+                  </div>
+              <% end %>
           <% else %>
-            <%= render partial: 'providers/form' %>
+              <%= render partial: 'welcome/provider_form' %>
           <% end %>
         </div>
       </div>

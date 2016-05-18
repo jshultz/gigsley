@@ -1,0 +1,8 @@
+<%= simple_form_for(:provider, url: '/providers/search') do |f| %>
+    <div class="col-md-6 col-md-offset-2">
+      <%= f.input :search, { class: 'form-control', label: false } %>
+    </div>
+    <div class="col-md-2">
+      <%= f.button :submit, "Search Providers" %>
+    </div>
+<% end %>
