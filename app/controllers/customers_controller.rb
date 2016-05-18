@@ -39,15 +39,27 @@ class CustomersController < ApplicationController
   def search
     @ip = request.remote_ip
     @location = request.location
+    @search = nil
     @city = @location.city.present? ? @location.city : 'Ogden'
     @state = @location.state.present? ? @location.state : 'UT'
     @range = params['range'].present? ? params['range'] : 100
     @gigs = []
-    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( customer: true, job_id: params[:customer][:job].to_i )
+    if params[:customer].present?
+      @search = !params[:customer][:search].blank? ? params[:customer][:search] : ''
+      @job = params[:customer][:job].present? ? params[:customer][:job].to_i : nil
+    end
+
+    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( customer: true )
+    @profiles = @profiles.where( job_id: @job ) if @job != nil
+
+    if @profiles.tagged_with(@search).length > 0
+      @profiles = @profiles.tagged_with(@search)
+    end
+
     @profiles.each do |profile|
       if profile.gigs.present?
         profile.gigs.each do |gig|
-          @gigs << gig
+          @gigs << gig if (gig.jobName.downcase.include? @search) || (gig.description.downcase.include? @search)
         end
       end
     end

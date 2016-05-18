@@ -17,10 +17,30 @@ class ProvidersController < ApplicationController
   def search
     @ip = request.remote_ip
     @location = request.location
+    @search = nil
     @city = @location.city.present? ? @location.city : 'Ogden'
     @state = @location.state.present? ? @location.state : 'UT'
-    @range = params['range'].present? ? params['range'] : 100
-    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( provider: true, job_id: params[:provider][:job].to_i )
+    @range = 100
+    if params[:provider].present?
+      @range = params[:provider][:range].present? ? params[:provider][:range] : 100
+      @search = !params[:provider][:search].blank? ? params[:provider][:search] : ''
+      @job = params[:provider][:job].present? ? params[:provider][:job].to_i : nil
+    end
+
+    @profiles = Profile.near("#{@city}, #{@state}, US", @range).where(provider: true)
+    @profiles = @profiles.where( job_id: @job ) if @job != nil
+
+    if @profiles.tagged_with(@search).length > 0
+      @profiles = @profiles.tagged_with(@search)
+    end
+
+    @profiles.each do |profile|
+      if profile.bio.present?
+        @profiles << profile if (profile.bio.title.downcase.include? @search) || (profile.bio.experience.downcase.include? @search)
+      end
+    end if !@search.blank?
+
+    # @profiles = Profile.near("#{@city}, #{@state}, US", @range).where( provider: true, job_id: params[:provider][:job].to_i )
   end
 
   # GET /providers/1
