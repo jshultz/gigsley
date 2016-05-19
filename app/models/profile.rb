@@ -6,6 +6,19 @@ class Profile < ActiveRecord::Base
   acts_as_ordered_taggable # Alias for acts_as_taggable_on :tags
   acts_as_ordered_taggable_on :skills, :interests
 
+  validates :name, presence: true, on: [:create,:update]
+  validates :street, presence: true, on: [:create,:update]
+  validates :city, presence: true, on: [:create,:update]
+  validates :state, presence: true, on: [:create,:update]
+  validates :home_phone, presence: true, on: [:create,:update]
+  validates :terms, presence: true, on: :create
+
+  validates :email,
+            :presence => true,
+            :format => { :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ ,
+                         :message => 'Invalid e-mail! Please provide a valid e-mail address'},
+            :on => [:create, :update]
+
   include PgSearch
 
   belongs_to :user

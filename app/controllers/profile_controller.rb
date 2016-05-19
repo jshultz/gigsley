@@ -31,8 +31,11 @@ class ProfileController < ApplicationController
     @user = User.where(id: current_user.id).first
 
     if request.post?
-      if @user.profile.update_attributes profile_params
+      @profile = Profile.find_by user_id: current_user.id
+      if @profile.update_attributes profile_params
         redirect_to profile_path
+      else
+        render :edit, flash: @profile.errors
       end
     end
 
@@ -65,8 +68,17 @@ class ProfileController < ApplicationController
   # Step 3
   def bio
     @user = User.where(id: current_user.id).first
+
     if request.post?
-      @user.profile.bio.update_attributes(bio_params)
+      params[:bio][:profile_id] = @user.profile.id
+      @bio = Bio.find_by profile_id: @user.profile.id
+
+      if @bio.update_attributes(bio_params)
+        redirect_to profile_path
+      else
+        render :bio, flash: @bio.errors
+      end
+
     end
   end
 
@@ -111,15 +123,15 @@ class ProfileController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :provider, :customer, :job_id, :email, :name )
+    params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :provider, :customer, :job_id, :email, :name, :user_id, :tag_list )
   end
   def bio_params
-    params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel)
+    params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel, :profile_id)
   end
   def experience_params
-    params.require(:experience).permit(:specialNeeds, :infants, :twins, :homework, :years, :sickChildren)
+    params.require(:experience).permit(:specialNeeds, :infants, :twins, :homework, :years, :sickChildren, :profile_id)
   end
   def schedule_params
-    params.require(:schedule).permit(:shortNotice, :summerMonths, :beforeSchool, :afterSchool)
+    params.require(:schedule).permit(:shortNotice, :summerMonths, :beforeSchool, :afterSchool, :profile_id)
   end
 end

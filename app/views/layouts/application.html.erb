@@ -67,7 +67,9 @@
           <% if !current_user.profile.blank? && current_user.profile.customer == true %>
               <li role="presentation"><a href="/providers">Hire Someone</a></li>
           <% end %>
-            <li role="presentation"><a href="/conversations">Your Conversations</a></li>
+            <% if !current_user.profile.blank? %>
+                <li role="presentation"><a href="/conversations">Your Conversations</a></li>
+            <% end %>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

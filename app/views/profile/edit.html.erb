@@ -27,15 +27,24 @@
         </div>
         <div class="row">
           <div class="col-md-12">
+            <% if @profile.errors.present? %>
+                <div class="alert alert-warning">
+                  <strong>Warning!</strong> <%= @profile.errors.full_messages.first if @profile.errors.any? %>
+                </div>
+            <% end unless @profile.blank? %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <%= simple_form_for :profile, url: profile_edit_path do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :name, as: :string, input_html: {value: @user.profile.present? ? @user.profile.name : ''}  %>
+                    <%= f.input :name, as: :string, input_html: {value: @user.profile.present? ? @user.profile.name : ''}, required:true, error: 'Username is mandatory, please specify one'  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :email, as: :email, input_html: {value: @user.profile.present? ? @user.profile.email : ''}  %>
+                    <%= f.input :email, as: :email, input_html: {value: @user.profile.present? ? @user.profile.email : ''}, placeholder: 'user@domain.com'  %>
                   </div>
                 </div>
                 <div class="row">
@@ -61,6 +70,11 @@
                 <div class="row">
                   <div class="col-md-12">
                     <%= f.input :mobile_phone, as: :tel,  input_html: {value: @user.profile.present? ? @user.profile.mobile_phone : ''}  %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.input :skill_list, as: :string, label: "Skill List (comma separated)", input_html: {value: @user.profile.skill_list } %>
                   </div>
                 </div>
                 <div class="row">

@@ -31,6 +31,15 @@
         </div>
         <div class="row">
           <div class="col-md-12">
+            <% if @gig.errors.present? %>
+                <div class="alert alert-warning">
+                  <strong>Warning!</strong> <%= @gig.errors.full_messages.first if @gig.errors.any? %>
+                </div>
+            <% end unless @gig.blank? %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <%= simple_form_for :gig, url: {action: 'gigs'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">

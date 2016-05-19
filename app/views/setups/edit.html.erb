@@ -27,40 +27,64 @@
         </div>
         <div class="row">
           <div class="col-md-12">
+            <% if @profile.errors.present? %>
+                <div class="alert alert-warning">
+                  <strong>Warning!</strong> <%= @profile.errors.full_messages.first if @profile.errors.any? %>
+                </div>
+            <% end unless @profile.blank? %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <%= simple_form_for :profile, url: setup_create_path, method: :post do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :name, as: :string, input_html: {value: @user.profile.present? ? @user.profile.name : ''}  %>
+                    <% if f.error_notification.present? %>
+                      <div class="alert alert-warning">
+                        <strong>Warning!</strong> <%= f.error_notification %>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :email, as: :email, input_html: {value: @user.profile.present? ? @user.profile.email : ''}  %>
+                    <%= f.input :name, as: :string, input_html: {value: @user.profile.present? ? @user.profile.name : ''}, required:true, error: 'Your Name is required.'  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :street, as: :string, input_html: {value: @user.profile.present? ? @user.profile.street : ''}  %>
+                    <%= f.input :email, as: :email, input_html: {value: @user.profile.present? ? @user.profile.email : ''}, placeholder: 'user@domain.com'  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :city, as: :string,  input_html: {value: @user.profile.present? ? @user.profile.city : ''}  %>
+                    <%= f.input :street, as: :string, input_html: {value: @user.profile.present? ? @user.profile.street : ''}, required:true, error: 'Your Street is required.'  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :state, as: :string,  input_html: {value: @user.profile.present? ? @user.profile.state : ''}  %>
+                    <%= f.input :city, as: :string,  input_html: {value: @user.profile.present? ? @user.profile.city : ''}, required:true, error: 'Your City is required.'  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :home_phone, as: :tel,  input_html: {value: @user.profile.present? ? @user.profile.home_phone : ''}  %>
+                    <%= f.input :state, as: :string,  input_html: {value: @user.profile.present? ? @user.profile.state : ''}, required:true, error: 'Your State is required.'  %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.input :home_phone, as: :tel,  input_html: {value: @user.profile.present? ? @user.profile.home_phone : ''}, required:true, error: 'Your Home Phone is required.'  %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                     <%= f.input :mobile_phone, as: :tel,  input_html: {value: @user.profile.present? ? @user.profile.mobile_phone : ''}  %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>List some skills that best describe you (comma separated).</label>
+                    <%= f.input :tag_list, value: @user.profile.present? ? @user.profile.tag_list : nil %>
                   </div>
                 </div>
                 <div class="row">
@@ -73,7 +97,11 @@
                     <%= f.input :provider, label: "Do you wish to register as a Provider?", as: :boolean, boolean_style: :inline, input_html: {value: @user.profile.present? ? @user.profile.provider : ''} %>
                   </div>
                 </div>
-
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.input :terms, label: "I agree to the Terms of Use. For details on collection and use of your information, see our Privacy Policy.", as: :boolean, boolean_style: :inline, input_html: {value: @user.profile.present? ? @user.profile.terms : ''} %>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-md-12">
                     <%= f.submit %>

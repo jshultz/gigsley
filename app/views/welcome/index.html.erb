@@ -14,7 +14,7 @@
               <%= render partial: 'welcome/customer_form' %>
           <% else %>
               <%= render partial: 'welcome/provider_form' %>
-          <% end %>
+          <% end unless !current_user.present? %>
         </div>
       </div>
       <div class="row">

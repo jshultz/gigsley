@@ -30,38 +30,28 @@ class SetupsController < ApplicationController
     @ip = request.remote_ip
     params[:profile][:ip] = request.remote_ip
     params[:profile][:full_address] = params[:profile][:street] + ', ' + params[:profile][:city] + ', ' + params[:profile][:state]
-    @user = User.where(id: current_user.id).first
+    @user = User.where(id: current_user.id).first!
+    params[:profile][:user_id] = @user.id
+
     if @user.profile.blank?
-      if @user.create_profile(profile_params)
-        @user.profile.skill_list.add(params[:tag_list])
+      @profile = Profile.new(profile_params)
+      if @profile.save
+        @user = User.where(id: current_user.id).first!
+        @user.profile.skill_list.add(params[:profile][:tag_list])
+        @user.profile.save
         redirect_to setup_jobs_path current_user.id
       else
-        redirect_to setup_thankyou_path
+        render :edit, flash: @profile.errors
       end
     end
-  end
 
-  # PATCH/PUT /setups/1
-  # PATCH/PUT /setups/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @setup.update(setup_params)
-  #       format.html { redirect_to @setup, notice: 'Setup was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @setup }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @setup.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  end
 
   # Step 2
   def jobs
     @user = User.where(id: current_user.id).first
     if request.post?
-
       if @user.profile.update_attributes(profile_params)
-
         if @user.profile.customer == true
           redirect_to setup_gigs_path current_user.id
         elsif @user.profile.provider == true
@@ -70,6 +60,8 @@ class SetupsController < ApplicationController
           redirect_to setup_thankyou_path
         end
 
+      else
+        redirect_to setup_jobs_path
       end
 
     end
@@ -79,8 +71,12 @@ class SetupsController < ApplicationController
   def gigs
     @user = User.where(id: current_user.id).first
     if request.post?
-      if @user.profile.gigs.create(gigs_params)
+      params[:gig][:profile_id] = @user.profile.id
+      @gig = Gig.new(gigs_params)
+      if @gig.save
         redirect_to setup_vitals_path current_user.id
+      else
+        render :gigs, flash: @gig.errors
       end
     end
   end
@@ -99,8 +95,12 @@ class SetupsController < ApplicationController
   def bio
     @user = User.where(id: current_user.id).first
     if request.post?
-      if @user.profile.create_bio(bio_params)
+      params[:bio][:profile_id] = @user.profile.id
+      @bio = Bio.new(bio_params)
+      if @bio.save
         redirect_to setup_experience_path current_user.id
+      else
+        render :bio, flash: @bio.errors
       end
     end
   end
@@ -148,18 +148,18 @@ class SetupsController < ApplicationController
       params.fetch(:setup, {})
     end
     def profile_params
-      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :provider, :customer, :job_id, :email, :name )
+      params.require(:profile).permit(:street, :city, :state, :home_phone, :mobile_phone, :ip, :full_address, :phone, :displayPhone, :birthDate, :gender, :eligible, :skill_list, :provider, :customer, :job_id, :email, :name, :terms, :user_id )
     end
     def bio_params
-      params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel)
+      params.require(:bio).permit(:title, :experience, :car, :pet, :smoke, :minHour, :maxHour, :travel, :profile_id)
     end
     def experience_params
-      params.require(:experience).permit(:specialNeeds, :infants, :twins, :homework, :years, :sickChildren)
+      params.require(:experience).permit(:specialNeeds, :infants, :twins, :homework, :years, :sickChildren, :profile_id)
     end
     def gigs_params
-      params.require(:gig).permit(:jobName, :description, :awarded, :job_id, :profile_id, :endDate)
+      params.require(:gig).permit(:jobName, :description, :awarded, :job_id, :profile_id, :endDate, :profile_id)
     end
     def schedule_params
-      params.require(:schedule).permit(:shortNotice, :summerMonths, :beforeSchool, :afterSchool)
+      params.require(:schedule).permit(:shortNotice, :summerMonths, :beforeSchool, :afterSchool, :profile_id)
     end
 end

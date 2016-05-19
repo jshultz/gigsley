@@ -27,6 +27,15 @@
         </div>
         <div class="row">
           <div class="col-md-12">
+            <% if @vitals.errors.present? %>
+                <div class="alert alert-warning">
+                  <strong>Warning!</strong> <%= @vitals.errors.full_messages.first if @vitals.errors.any? %>
+                </div>
+            <% end unless @vitals.blank? %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <%= simple_form_for :profile, url: {action: 'vitals'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
@@ -46,11 +55,6 @@
                 <div class="row">
                   <div class="col-md-12">
                     <%= f.input :gender, collection: [['Female', 0], ['Male', 1]]  %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= f.input :eligible, as: :boolean, boolean_style: :inline, label: "Are You Eligible To Work In The United States?", checked: @user.profile.eligible %>
                   </div>
                 </div>
                 <%= f.submit %>

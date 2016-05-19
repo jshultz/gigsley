@@ -22,7 +22,16 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <p>Fill out this basic profile information to help you get noticed!</p>
+            <p>Fill out this basic profile information to help you get noticed! If you are looking for work, then this will help!</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <% if @bio.errors.present? %>
+                <div class="alert alert-warning">
+                  <strong>Warning!</strong> <%= @bio.errors.full_messages.first if @bio.errors.any? %>
+                </div>
+            <% end unless @bio.blank? %>
           </div>
         </div>
         <div class="row">
@@ -45,7 +54,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :pets, as: :boolean, boolean_style: :inline, label: "Are you ok to be around pets?", checked: @user.profile.bio.present? ? @user.profile.bio.pet : nil %>
+                    <%= f.input :pet, as: :boolean, boolean_style: :inline, label: "Are you ok to be around pets?", checked: @user.profile.bio.present? ? @user.profile.bio.pet : nil %>
                   </div>
                 </div>
                 <div class="row">

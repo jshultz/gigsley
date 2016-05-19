@@ -34,12 +34,18 @@
             <%= simple_form_for :profile, url: {action: 'jobs'} do |f| %>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :job_id, collection: Job.all %>
+                    <%
+                      job_options = Job.all.map do |s|
+                        [ s.name, s.id ]
+                      end
+                    %>
+                    <label>Would you like to register as a? </label>
+                    <%= f.select :job, options_for_select(job_options), {}, { required: 'true', autofocus: 'true', class: 'form-control'} %>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <%= f.input :skill_list, as: :string, label: "Skill List (comma separated)", value: @user.profile.present? ? @user.profile.tag_list : nil if @user.profile.provider == true %>
+                    <%= f.input :skill_list, as: :string, label: "Skill List (comma separated)", input_html: {value: @user.profile.skill_list } %>
                   </div>
                 </div>
                 <div class="row">
