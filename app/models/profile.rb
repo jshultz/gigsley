@@ -29,6 +29,8 @@ class Profile < ActiveRecord::Base
   has_one :schedule
   has_many :galleries
 
+  has_one :availability, as: :gig_sched
+
   pg_search_scope :profile_search, :against => [:first_name, :last_name]
 
   def mailboxer_name
