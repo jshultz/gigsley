@@ -28,10 +28,12 @@ class ProfileController < ApplicationController
 
   # Step 1
   def edit
+
     @user = User.where(id: current_user.id).first
 
     if request.post?
       @profile = Profile.find_by user_id: current_user.id
+
       if @profile.update_attributes profile_params
         redirect_to profile_path
       else
@@ -53,7 +55,6 @@ class ProfileController < ApplicationController
     @user = User.where(id: current_user.id).first
     @user.profile.tag_list.add("awesome, slick", parse: true)
     @user.profile.skill_list.add(params[:tag_list])
-
     @profile = @user.create_profile(profile_params)
   end
 
