@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Gigs</h1>
+      </div>
+    </div>
+    <%= render partial: 'form' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">We are searching withing <%= @range %> miles of your location (<%= @city %>, <%= @state %>) for Customers.</div>
+</div>
+
+<% @gigs.each do |gig| %>
+    <div class="row"><div class="col-md-12"><p>&nbsp;</p></div></div>
+    <%= link_to gig_path gig.id do %>
+        <div class="row">
+          <div class="col-md-1">&nbsp;</div>
+          <div class="col-md-4"><h4><%= gig.jobName %></h4></div>
+          <div class="col-md-1">&nbsp;</div>
+        </div>
+        <div class="row">
+          <div class="col-md-1">&nbsp;</div>
+          <div class="col-md-4">Posted: <%= distance_of_time_in_words(gig.created_at, Time.now) %> ago.</div>
+          <div class="col-md-4">Expires: <%= distance_of_time_in_words(gig.endDate, Time.now, include_seconds: true) if gig.endDate.present? %> from now.</div>
+          <div class="col-md-1">&nbsp;</div>
+        </div>
+        <div class="row">
+          <div class="col-md-1">&nbsp;</div>
+          <div class="col-md-4"><p><%= gig.description %></p></div>
+          <div class="col-md-4"><p><%= link_to 'Email Gig Poster', customer_email_gig_path(gig.profile_id, gig.id), class: 'email'  %></p></div>
+          <div class="col-md-1">&nbsp;</div>
+        </div>
+    <% end %>
+    <div class="row" style="border-bottom: 1px solid #D9E8F5"><div class="col-md-12"><p>&nbsp;</p></div></div>
+<% end %>

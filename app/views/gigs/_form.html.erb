@@ -1,0 +1,21 @@
+<%= simple_form_for(:gig, url: '/gigs/search') do |f| %>
+    <div class="col-md-6">
+      <%= f.input :search, { class: 'form-control', label: false } %>
+    </div>
+
+    <div class="col-md-2">
+      <%
+        job_options = Job.all.map do |s|
+          [ s.name, s.id ]
+        end
+      %>
+      <%= f.select :job, options_for_select(job_options), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+    </div>
+    <div class="col-md-2">
+      <%= f.select :range, [[10, "10"], [20, "20"], [30, "30"], [100, "100"]],
+                   { label: "Distance:"  },
+                   { class: "form-control selectpicker" }
+      %>
+    </div>
+    <%= f.button :submit, "Search Gigs" %>
+<% end %>

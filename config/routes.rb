@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     resources :pictures
   end
 
+  resources :gigs
+  match 'gigs/search', to: 'gigs#search', via: [:get, :post], as: :gigs_search_path
+
   resources :messages
 
   match 'profile/index', to: 'profile#index', via: [:get, :post], as: :profile_index
