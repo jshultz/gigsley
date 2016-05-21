@@ -41,9 +41,9 @@
           <a class="dropdown-toggle" href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/about/press">Press</a></li>
-            <li><a href="/about/twitter">Twitter</a></li>
-            <li><a href="/about/facebook">Facebook</a></li>
-            <li><a href="/about/press">Policies</a></li>
+            <li><%= link_to 'Twitter',twitter_link_path %></li>
+            <li><%= link_to 'Facebook',facebook_link_path %></li>
+            <li><a href="/about/policies">Policies</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -53,21 +53,6 @@
             <li><a href="/support/inquiry">Inquiries</a></li>
           </ul>
         </li>
-        <% if current_user && current_user.email.present? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <% if current_user.present? && (current_user.profile.blank? || current_user.profile.bio.blank?) %>
-                  <li><a href="/setups/<%= current_user.id %>/edit" >Edit Your Profile</a></li>
-              <% else %>
-                  <li><a href="/profile/index" >View All Profiles</a></li>
-                  <li><a href="/profile/<%= current_user.id %>" >View Your Profile</a></li>
-                  <li><a href="/profile/<%= current_user.id %>/edit" >Edit Your Profile</a></li>
-                  <li><a href="/galleries">Create/Edit Your Personal Gallery</a></li>
-              <% end %>
-            </ul>
-          </li>
-        <% end %>
         <% if current_user %>
             <% if !current_user.profile.blank? && current_user.profile.provider == true %>
                 <li class="dropdown">
@@ -91,7 +76,22 @@
         <% if !current_user %>
           <li role="presentation"><a href="/users/sign_in">Login</a></li>
         <% else %>
-          <li role="presentation" style=float:right><%=link_to("Logout", destroy_user_session_path, method: :delete) %></li>
+            <% if current_user && current_user.email.present? %>
+                <li class="dropdown" role="presentation">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <% if current_user.present? && (current_user.profile.blank? || current_user.profile.bio.blank?) %>
+                        <li><a href="/setups/<%= current_user.id %>/edit" >Edit Your Profile</a></li>
+                    <% else %>
+                        <li><a href="/profile/index" >View All Profiles</a></li>
+                        <li><a href="/profile/<%= current_user.id %>" >View Your Profile</a></li>
+                        <li><a href="/profile/<%= current_user.id %>/edit" >Edit Your Profile</a></li>
+                        <li><a href="/galleries">Create/Edit Your Personal Gallery</a></li>
+                    <% end %>
+                  </ul>
+                </li>
+            <% end %>
+          <li role="presentation"><%=link_to("Logout", destroy_user_session_path, method: :delete) %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -62,8 +62,18 @@ Rails.application.routes.draw do
 
   resources :setups, controller: 'setups', as: 'setup'
 
+  match 'support/faq', to: 'supports#faq', via: [:get]
+  match 'support/inquiry', to: 'supports#inquiry', via: [:get]
 
-  get '/about' => 'welcome#about'
+  match 'about/press', to: 'abouts#press', via: [:get]
+  match 'about/policies', to: 'abouts#policies', via: [:get]
+
+  get '/about/twitter',
+      to: redirect('http://www.twitter.com'),
+      as: 'twitter_link'
+  get '/about/facebook',
+      to: redirect('http://www.facebook.com'),
+      as: 'facebook_link'
 
 
   # Example of regular route:
