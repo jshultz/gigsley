@@ -53,6 +53,212 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-md-12">
+            <%= simple_form_for :availability, url: {action: 'availability'} do |f| %>
+              <div class="row">
+                <div class="col-md-12">
+                  <% @t = Time.new %>
+                  <div class="col-md-3">&nbsp;</div>
+                  <div class="col-md-1"><label>Su</label></div><div class="col-md-1"><label>Mo</label></div><div class="col-md-1"><label>Tu</label></div>
+                  <div class="col-md-1"><label>We</label></div><div class="col-md-1"><label>Th</label></div><div class="col-md-1"><label>Fr</label></div>
+                  <div class="col-md-1"><label>Sa</label></div>
+                </div>
+              </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Early Morning
+                      (6am - 9am)</label>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyMorning, name:'sunday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyMorning, name:'monday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyMorning, name:'tuesday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyMorning, name:'wednesday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyMorning, name:'thursday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyMorning, name:'friday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyMorning, name:'saturday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Late Morning
+                      (9am - 12pm)</label>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateMorning, name:'sunday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateMorning, name:'monday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateMorning, name:'tuesday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateMorning, name:'wednesday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateMorning, name:'thursday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateMorning, name:'friday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateMorning, name:'saturday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Early Afternoon
+                      (12pm - 3pm)</label>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyAfternoon, name:'sunday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyAfternoon, name:'monday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyAfternoon, name:'tuesday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyAfternoon, name:'wednesday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyAfternoon, name:'thursday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyAfternoon, name:'friday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyAfternoon, name:'saturday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Late Afternoon
+                      (3pm - 6pm)</label>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateAfternoon, name:'sunday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateAfternoon, name:'monday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateAfternoon, name:'tuesday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateAfternoon, name:'wednesday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateAfternoon, name:'thursday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateAfternoon, name:'friday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateAfternoon, name:'saturday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Early Evening
+                      (6pm - 9pm)</label>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyEvening, name:'sunday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyEvening, name:'monday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyEvening, name:'tuesday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyEvening, name:'wednesday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyEvening, name:'thursday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyEvening, name:'friday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :earlyEvening, name:'saturday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Late Evening
+                      (9pm - 12am)</label>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateEvening, name:'sunday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateEvening, name:'monday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateEvening, name:'tuesday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateEvening, name:'wednesday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateEvening, name:'thursday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateEvening, name:'friday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :lateEvening, name:'saturday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Overnight
+                      (12am - 6am)</label>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :overnight, name:'sunday[overnight]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :overnight, name:'monday[overnight]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :overnight, name:'tuesday[overnight]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :overnight, name:'wednesday[overnight]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :overnight, name:'thursday[overnight]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :overnight, name:'friday[overnight]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                  <div class="col-md-1">
+                    <%= f.input_field :overnight, name:'saturday[overnight]', as: :boolean, boolean_style: :inline %>
+                  </div>
+                </div>
+
+              <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-12">&nbsp;</div>
         </div>
       </div>

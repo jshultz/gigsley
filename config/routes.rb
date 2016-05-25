@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   # get '/profile/index' => 'profile#index'
 
+  resources :availabilities
+
   resources :conversations
 
   match 'customers/:id/gig', to: 'customers#gig', via: [:get, :post], as: :customer_gig
@@ -40,11 +42,13 @@ Rails.application.routes.draw do
   resources :messages
 
   match 'profile/index', to: 'profile#index', via: [:get, :post], as: :profile_index
-  match 'profile/:id/edit', to: 'profile#edit', via: [:get, :post], as: :profile_edit
-  match 'profile/:id/vitals', to: 'profile#vitals', via: [:get, :post], as: :profile_vitals
+  match 'profile/:id/availability', to: 'profile#availability', via: [:get, :post], as: :profile_availability
   match 'profile/:id/bio', to: 'profile#bio', via: [:get, :post], as: :profile_bio
+  match 'profile/:id/edit', to: 'profile#edit', via: [:get, :post], as: :profile_edit
   match 'profile/:id/experience', to: 'profile#experience', via: [:get, :post], as: :profile_experience
   match 'profile/:id/schedule', to: 'profile#schedule', via: [:get, :post], as: :profile_schedule
+  match 'profile/:id/vitals', to: 'profile#vitals', via: [:get, :post], as: :profile_vitals
+
 
   resources :profile
 

@@ -96,6 +96,10 @@ class ProfileController < ApplicationController
     end
   end
 
+  def availability
+    byebug
+  end
+
   def create
     @ip = request.remote_ip
     params[:profile][:ip] = request.remote_ip
