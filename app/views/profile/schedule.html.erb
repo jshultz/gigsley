@@ -70,25 +70,32 @@
                       (6am - 9am)</label>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyMorning, name:'sunday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 0, earlyMorning: true).present? %>
+                    <%= f.input_field :earlyMorning, name:'day[sunday][earlyMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyMorning, name:'monday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 1, earlyMorning: true).present? %>
+                    <%= f.input_field :earlyMorning, name:'day[monday][earlyMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyMorning, name:'tuesday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 2, earlyMorning: true).present? %>
+                    <%= f.input_field :earlyMorning, name:'day[tuesday][earlyMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyMorning, name:'wednesday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 3, earlyMorning: true).present? %>
+                    <%= f.input_field :earlyMorning, name:'day[wednesday][earlyMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyMorning, name:'thursday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 4, earlyMorning: true).present? %>
+                    <%= f.input_field :earlyMorning, name:'day[thursday][earlyMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyMorning, name:'friday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 5, earlyMorning: true).present? %>
+                    <%= f.input_field :earlyMorning, name:'day[friday][earlyMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyMorning, name:'saturday[earlyMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 6, earlyMorning: true).present? %>
+                    <%= f.input_field :earlyMorning, name:'day[saturday][earlyMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                 </div>
                 <div class="row">
@@ -97,25 +104,32 @@
                       (9am - 12pm)</label>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateMorning, name:'sunday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 0, lateMorning: true).present? %>
+                    <%= f.input_field :lateMorning, name:'day[sunday][lateMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateMorning, name:'monday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 1, lateMorning: true).present? %>
+                    <%= f.input_field :lateMorning, name:'day[monday][lateMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateMorning, name:'tuesday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 2, lateMorning: true).present? %>
+                    <%= f.input_field :lateMorning, name:'day[tuesday][lateMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateMorning, name:'wednesday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 3, lateMorning: true).present? %>
+                    <%= f.input_field :lateMorning, name:'day[wednesday][lateMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateMorning, name:'thursday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 4, lateMorning: true).present? %>
+                    <%= f.input_field :lateMorning, name:'day[thursday][lateMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateMorning, name:'friday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 5, lateMorning: true).present? %>
+                    <%= f.input_field :lateMorning, name:'day[friday][lateMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateMorning, name:'saturday[lateMorning]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 6, lateMorning: true).present? %>
+                    <%= f.input_field :lateMorning, name:'day[saturday][lateMorning]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                 </div>
                 <div class="row">
@@ -124,25 +138,32 @@
                       (12pm - 3pm)</label>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyAfternoon, name:'sunday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 0, earlyAfternoon: true).present? %>
+                    <%= f.input_field :earlyAfternoon, name:'day[sunday][earlyAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyAfternoon, name:'monday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 1, earlyAfternoon: true).present? %>
+                    <%= f.input_field :earlyAfternoon, name:'day[monday][earlyAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyAfternoon, name:'tuesday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 2, earlyAfternoon: true).present? %>
+                    <%= f.input_field :earlyAfternoon, name:'day[tuesday][earlyAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyAfternoon, name:'wednesday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 3, earlyAfternoon: true).present? %>
+                    <%= f.input_field :earlyAfternoon, name:'day[wednesday][earlyAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyAfternoon, name:'thursday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 4, earlyAfternoon: true).present? %>
+                    <%= f.input_field :earlyAfternoon, name:'day[thursday][earlyAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyAfternoon, name:'friday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 5, earlyAfternoon: true).present? %>
+                    <%= f.input_field :earlyAfternoon, name:'day[friday][earlyAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyAfternoon, name:'saturday[earlyAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 6, earlyAfternoon: true).present? %>
+                    <%= f.input_field :earlyAfternoon, name:'day[saturday][earlyAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                 </div>
                 <div class="row">
@@ -151,25 +172,32 @@
                       (3pm - 6pm)</label>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateAfternoon, name:'sunday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 0, lateAfternoon: true).present? %>
+                    <%= f.input_field :lateAfternoon, name:'day[sunday][lateAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateAfternoon, name:'monday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 1, lateAfternoon: true).present? %>
+                    <%= f.input_field :lateAfternoon, name:'day[monday][lateAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateAfternoon, name:'tuesday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 2, lateAfternoon: true).present? %>
+                    <%= f.input_field :lateAfternoon, name:'day[tuesday][lateAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateAfternoon, name:'wednesday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 3, lateAfternoon: true).present? %>
+                    <%= f.input_field :lateAfternoon, name:'day[wednesday][lateAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateAfternoon, name:'thursday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 4, lateAfternoon: true).present? %>
+                    <%= f.input_field :lateAfternoon, name:'day[thursday][lateAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateAfternoon, name:'friday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 5, lateAfternoon: true).present? %>
+                    <%= f.input_field :lateAfternoon, name:'day[friday][lateAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateAfternoon, name:'saturday[lateAfternoon]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 6, lateAfternoon: true).present? %>
+                    <%= f.input_field :lateAfternoon, name:'day[saturday][lateAfternoon]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                 </div>
                 <div class="row">
@@ -178,25 +206,32 @@
                       (6pm - 9pm)</label>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyEvening, name:'sunday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 0, lateAfternoon: true).present? %>
+                    <%= f.input_field :earlyEvening, name:'day[sunday][earlyEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyEvening, name:'monday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 1, lateAfternoon: true).present? %>
+                    <%= f.input_field :earlyEvening, name:'day[monday][earlyEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyEvening, name:'tuesday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 2, lateAfternoon: true).present? %>
+                    <%= f.input_field :earlyEvening, name:'day[tuesday][earlyEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyEvening, name:'wednesday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 3, lateAfternoon: true).present? %>
+                    <%= f.input_field :earlyEvening, name:'day[wednesday][earlyEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyEvening, name:'thursday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 4, lateAfternoon: true).present? %>
+                    <%= f.input_field :earlyEvening, name:'day[thursday][earlyEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyEvening, name:'friday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 5, lateAfternoon: true).present? %>
+                    <%= f.input_field :earlyEvening, name:'day[friday][earlyEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :earlyEvening, name:'saturday[earlyEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 6, lateAfternoon: true).present? %>
+                    <%= f.input_field :earlyEvening, name:'day[saturday][earlyEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                 </div>
                 <div class="row">
@@ -205,25 +240,32 @@
                       (9pm - 12am)</label>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateEvening, name:'sunday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 0, lateEvening: true).present? %>
+                    <%= f.input_field :lateEvening, name:'day[sunday][lateEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateEvening, name:'monday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 1, lateEvening: true).present? %>
+                    <%= f.input_field :lateEvening, name:'day[monday][lateEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateEvening, name:'tuesday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 2, lateEvening: true).present? %>
+                    <%= f.input_field :lateEvening, name:'day[tuesday][lateEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateEvening, name:'wednesday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 3, lateEvening: true).present? %>
+                    <%= f.input_field :lateEvening, name:'day[wednesday][lateEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateEvening, name:'thursday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 4, lateEvening: true).present? %>
+                    <%= f.input_field :lateEvening, name:'day[thursday][lateEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateEvening, name:'friday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 5, lateEvening: true).present? %>
+                    <%= f.input_field :lateEvening, name:'day[friday][lateEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :lateEvening, name:'saturday[lateEvening]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 6, lateEvening: true).present? %>
+                    <%= f.input_field :lateEvening, name:'day[saturday][lateEvening]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                 </div>
                 <div class="row">
@@ -232,25 +274,32 @@
                       (12am - 6am)</label>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :overnight, name:'sunday[overnight]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 0, overnight: true).present? %>
+                    <%= f.input_field :overnight, name:'day[sunday][overnight]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :overnight, name:'monday[overnight]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 1, overnight: true).present? %>
+                    <%= f.input_field :overnight, name:'day[monday][overnight]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :overnight, name:'tuesday[overnight]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 2, overnight: true).present? %>
+                    <%= f.input_field :overnight, name:'day[tuesday][overnight]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :overnight, name:'wednesday[overnight]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 3, overnight: true).present? %>
+                    <%= f.input_field :overnight, name:'day[wednesday][overnight]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :overnight, name:'thursday[overnight]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 4, overnight: true).present? %>
+                    <%= f.input_field :overnight, name:'day[thursday][overnight]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :overnight, name:'friday[overnight]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 5, overnight: true).present? %>
+                    <%= f.input_field :overnight, name:'day[friday][overnight]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                   <div class="col-md-1">
-                    <%= f.input_field :overnight, name:'saturday[overnight]', as: :boolean, boolean_style: :inline %>
+                    <% checked = @user.profile.availability.where(profile_id: @user.profile.id, day_of_week: 6, overnight: true).present? %>
+                    <%= f.input_field :overnight, name:'day[saturday][overnight]', as: :boolean, boolean_style: :inline, :checked => checked %>
                   </div>
                 </div>
 

@@ -29,7 +29,7 @@ class Profile < ActiveRecord::Base
   has_one :schedule
   has_many :galleries
 
-  has_one :availability, as: :gig_sched
+  has_many :availability
 
   pg_search_scope :profile_search, :against => [:first_name, :last_name]
 

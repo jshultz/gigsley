@@ -97,7 +97,32 @@ class ProfileController < ApplicationController
   end
 
   def availability
-    byebug
+    if request.post?
+      @user = User.where(id: current_user.id).first
+      count = 0
+      if params[:day].present?
+        params[:day].each_with_index { |day,index|
+          @availability = Availability.find_or_create_by(day_of_week: index, profile_id: @user.profile.id)
+          availability_params = {
+              day_of_week: index,
+              earlyMorning: day.last[:earlyMorning].to_i,
+              lateMorning: day.last[:lateMorning].to_i,
+              earlyAfternoon: day.last[:earlyAfternoon].to_i,
+              lateAfternoon: day.last[:lateAfternoon].to_i,
+              earlyEvening: day.last[:earlyEvening].to_i,
+              lateEvening: day.last[:lateEvening].to_i,
+              overnight: day.last[:overnight].to_i,
+              profile_id: @user.profile.id
+          }
+          @availability.update_attributes(availability_params)
+          count += 1
+        }
+        if count == 7
+          redirect_to profile_schedule_path
+        end
+      end
+
+    end
   end
 
   def create
@@ -131,5 +156,8 @@ class ProfileController < ApplicationController
   end
   def schedule_params
     params.require(:schedule).permit(:shortNotice, :summerMonths, :beforeSchool, :afterSchool, :profile_id)
+  end
+  def availability_params
+    params.permit(:start_at, :end_at, :day_of_week, :earlyMorning, :lateMorning, :earlyAfternoon, :lateAfternoon, :earlyEvening, :overnight, :profile_id, :gig_sched_id)
   end
 end
