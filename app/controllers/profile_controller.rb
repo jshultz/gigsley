@@ -97,6 +97,7 @@ class ProfileController < ApplicationController
   end
 
   def availability
+    @user = User.where(id: current_user.id).first
     if request.post?
       @user = User.where(id: current_user.id).first
       count = 0

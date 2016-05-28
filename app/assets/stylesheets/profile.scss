@@ -25,3 +25,27 @@
 .bottomright {position:absolute; bottom:0;  margin-bottom:7px; margin:7px; right: 0;}
 .bottomleft {position:absolute; bottom:0;  margin-bottom:7px; left: 100px;}
 .fixedheight { height: 200px;  width: 243px;  position:relative; border:1px solid;}
+
+#availability {
+  background-color: #003354;
+}
+#availability td {
+  text-align: center;
+}
+
+#availability.table-striped>tbody>tr:nth-child(odd)>td,
+#availability.table-striped>tbody>tr:nth-child(odd)>th,
+#availability.table-striped>tbody>tr:nth-child(odd) {
+  border-bottom: none;
+  background-color: #91BED4;
+}
+
+#availability.table-striped thead>tr>th,
+#availability.table-striped tfoot>tr>th,
+#availability.table-striped tbody>tr>td  {
+  border-top: none;
+}
+
+#availability.table-striped>tbody>tr:nth-child(even) label {
+  color: #D9E8F5
+}

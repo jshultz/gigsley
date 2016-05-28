@@ -1,21 +1,31 @@
-<%= simple_form_for(:gig, url: '/gigs/search') do |f| %>
-    <div class="col-md-6">
-      <%= f.input :search, { class: 'form-control', label: false } %>
-    </div>
-
-    <div class="col-md-2">
-      <%
-        job_options = Job.all.map do |s|
-          [ s.name, s.id ]
-        end
-      %>
-      <%= f.select :job, options_for_select(job_options), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
-    </div>
-    <div class="col-md-2">
-      <%= f.select :range, [[10, "10"], [20, "20"], [30, "30"], [100, "100"]],
-                   { label: "Distance:"  },
-                   { class: "form-control selectpicker" }
-      %>
-    </div>
-    <%= f.button :submit, "Search Gigs" %>
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <%= simple_form_for :gig, url: {action: :update} do |f| %>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :jobName, as: :string, label: "Name(title) of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @gig.jobName : nil  %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :description, as: :text, label: "Description of the Job Posting you are hiring for.", value: @user.profile.gigs.present? ? @gig.description : nil  %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :job_id, collection: Job.all %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :endDate, as: :date, html5: true %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.submit %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
