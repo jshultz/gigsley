@@ -1,7 +1,4 @@
 <div class="row">
-  <div class="col-md-12"><h1>Gig Page</h1></div>
-</div>
-<div class="row">
   <div class="col-md-12"><h2><%= @gig.jobName %></h2></div>
 </div>
 <% if @gig.profile_id == current_user.profile.id %>
@@ -11,242 +8,237 @@
       </div>
     </div>
 <% end %>
-<div class="row">
-  <div class="col-md-12">
+<div id="CustomerGigs" class="row">
+  <div class="col-md-3">
+    <% if @gig.availability.length > 0 %>
+        <div class="row">
+          <div class="col-md-12">
+            <table id="availability" class="table table-striped">
+              <tr class="row">
+                <td class="col-md-5">&nbsp;</td>
+                <td class="col-md-1" ><label>Su</label></td><td class="col-md-1"><label>Mo</label></td><td class="col-md-1"><label>Tu</label></td>
+                <td class="col-md-1"><label>We</label></td><td class="col-md-1"><label>Th</label></td><td class="col-md-1"><label>Fr</label></td>
+                <td class="col-md-1"><label>Sa</label></td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-5">
+                  <label>6am - <br/>9am</label>
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, earlyMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, earlyMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, earlyMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, earlyMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, earlyMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, earlyMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, earlyMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-5">
+                  <label>9am - <br/>12pm</label>
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, lateMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, lateMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, lateMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, lateMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, lateMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, lateMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, lateMorning: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-5">
+                  <label>12pm - <br/>3pm</label>
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, earlyAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, earlyAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, earlyAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, earlyAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, earlyAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, earlyAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, earlyAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-5">
+                  <label>3pm - <br/>6pm</label>
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-5">
+                  <label>6pm - <br/>9pm</label>
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, lateAfternoon: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-5">
+                  <label>9pm - <br/>12am</label>
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, lateEvening: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, lateEvening: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, lateEvening: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, lateEvening: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, lateEvening: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, lateEvening: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, lateEvening: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="col-md-5">
+                  <label>12am - <br/>6am</label>
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, overnight: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, overnight: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, overnight: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, overnight: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, overnight: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, overnight: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+                <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, overnight: true).present? ? 'checked' : '' %>
+                <td class="col-md-1 <%= checked %>">
+
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-md-8 col-md-offset-1">
     <p><%= @gig.description %></p>
   </div>
 </div>
-<% if @gig.availability.length > 0 %>
-    <div class="row">
-      <div class="col-md-12">
-        <table id="availability" class="table table-striped">
-          <tr class="row">
-            <td class="col-md-3">&nbsp;</td>
-            <td class="col-md-1" ><label>Su</label></td><td class="col-md-1"><label>Mo</label></td><td class="col-md-1"><label>Tu</label></td>
-            <td class="col-md-1"><label>We</label></td><td class="col-md-1"><label>Th</label></td><td class="col-md-1"><label>Fr</label></td>
-            <td class="col-md-1"><label>Sa</label></td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-3">
-              <label>Early Morning
-                (6am - 9am)</label>
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, earlyMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, earlyMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, earlyMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, earlyMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, earlyMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, earlyMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, earlyMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-3">
-              <label>Late Morning
-                (9am - 12pm)</label>
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, lateMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, lateMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, lateMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, lateMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, lateMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, lateMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, lateMorning: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-3">
-              <label>Early Afternoon
-                (12pm - 3pm)</label>
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, earlyAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, earlyAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, earlyAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-            <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, earlyAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, earlyAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, earlyAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, earlyAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-3">
-              <label>Late Afternoon
-                (3pm - 6pm)</label>
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-3">
-              <label>Early Evening
-                (6pm - 9pm)</label>
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, lateAfternoon: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-3">
-              <label>Late Evening
-                (9pm - 12am)</label>
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, lateEvening: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, lateEvening: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, lateEvening: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, lateEvening: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, lateEvening: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, lateEvening: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, lateEvening: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-          </tr>
-          <tr class="row">
-            <td class="col-md-3">
-              <label>Overnight<br/>
-                (12am - 6am)</label>
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 0, overnight: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 1, overnight: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 2, overnight: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 3, overnight: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 4, overnight: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 5, overnight: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-              <% checked = @gig.availability.where(gig_id: @gig.id, day_of_week: 6, overnight: true).present? ? 'checked' : '' %>
-            <td class="col-md-1 <%= checked %>">
-
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-<% end %>

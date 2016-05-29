@@ -11,7 +11,11 @@ h1 {
 
 }
 
-table#availability.table-striped td.checked,
+#CustomerGigs table#availability label {
+  font-size: x-small;
+}
+
+#CustomerGigs table#availability.table-striped td.checked,
 #availability.table-striped>tbody>tr:nth-child(odd)>td.checked{
   background-color: green;
   border: 1px solid #DADADA;
