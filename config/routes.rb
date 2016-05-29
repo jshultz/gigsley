@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   end
 
   resources :gigs
+  match 'gigs/:id/availability', to: 'gigs#availability', via: [:get, :post], as: :gigs_availability
   match 'gigs/search', to: 'gigs#search', via: [:get, :post], as: :gigs_search_path
 
   resources :messages

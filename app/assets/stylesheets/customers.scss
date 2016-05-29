@@ -10,3 +10,9 @@ a.email {
 h1 {
 
 }
+
+table#availability.table-striped td.checked,
+#availability.table-striped>tbody>tr:nth-child(odd)>td.checked{
+  background-color: green;
+  border: 1px solid #DADADA;
+}

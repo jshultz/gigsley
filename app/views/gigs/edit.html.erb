@@ -1,5 +1,14 @@
 <h1>Editing Gig</h1>
 
+<div class="row">
+  <div class="col-md-12">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active"><%= link_to 'Edit Gig', edit_gig_path %></li>
+      <li role="presentation"><%= link_to 'Edit Availability', gigs_availability_path(@gig.id) %></li>
+    </ul>
+  </div>
+</div>
+
 <%= render 'edit_form' %>
 
 <%= link_to 'Show', @gig %> |

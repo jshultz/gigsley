@@ -1,6 +1,6 @@
 class GigsController < ApplicationController
-  before_action :set_gig, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_gig, only: [:show, :edit, :update, :destroy, :availability]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :availability]
 
   # GET /gigs
   # GET /gigs.json
@@ -105,6 +105,35 @@ class GigsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to gigs_url, notice: 'Gig was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+
+  def availability
+    if request.post?
+      count = 0
+      if params[:day].present?
+        params[:day].each_with_index { |day,index|
+          @availability = Availability.find_or_create_by(day_of_week: index, gig_id: @gig.id)
+          availability_params = {
+              day_of_week: index,
+              earlyMorning: day.last[:earlyMorning].to_i,
+              lateMorning: day.last[:lateMorning].to_i,
+              earlyAfternoon: day.last[:earlyAfternoon].to_i,
+              lateAfternoon: day.last[:lateAfternoon].to_i,
+              earlyEvening: day.last[:earlyEvening].to_i,
+              lateEvening: day.last[:lateEvening].to_i,
+              overnight: day.last[:overnight].to_i,
+              gig_id: @gig.id
+          }
+          @availability.update_attributes(availability_params)
+          count += 1
+        }
+        if count == 7
+          redirect_to edit_gig_path @gig.id
+        end
+      end
+
     end
   end
 
