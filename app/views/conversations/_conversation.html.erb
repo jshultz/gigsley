@@ -1,6 +1,12 @@
 <%= div_for(conversation, :class =>"#{ 'unread ' if conversation.is_unread?(@user) }") do %>
 
     <div class="row">
+      <div class="col-md-12">
+        <p>Select the subject to view the conversation.</p>
+      </div>
+    </div>
+
+    <div class="row individual_conversation">
       <div class="col-md-2">
         <div class="avatar">
           <%= link_to image_tag(conversation.last_sender.user.image,
@@ -22,22 +28,11 @@
         <div class="row">
           <div class="col-md-10">
             <div class="subject">
-              <%= link_to(truncate(conversation.subject, :length => 55), conversation_path(conversation.id,:box => @box,:page => params[:page])) %>
+              <strong><%= link_to(truncate(conversation.subject, :length => 55), conversation_path(conversation.id,:box => @box,:page => params[:page])) %>
+              </strong>
             </div>
           </div>
-          <div class="col-md-2">
-            <% unless @box.eql?'trash' %>
-                <div class="action">
 
-                  <%= link_to(image_tag('/assets/icons/cancel-icon.svg', :alt => 'delete', :title => 'delete'),
-                              conversation_path(conversation, :location => @box,
-                                                :box => @box,
-                                                :page => params[:page]),
-                              data: { confirm: "Are you sure?" },
-                              method: :delete )%>
-                </div>
-            <% end %>
-          </div>
         </div>
         <div class="row">
           <div class="col-md-12">
